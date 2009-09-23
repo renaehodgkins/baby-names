@@ -1,0 +1,18 @@
+<div class='name'>
+  <b><%= name.name %> - <%= name.average_vote || 'no votes' %></b>
+	<div class='voting'>
+		<% unless voted_for?(name) %>
+			<% (1..5).each do |number| %>
+				<form action="/<%= name.id %>/vote/<%= number %>" method='post'>
+		      <input type='submit' value='<%= number %>'>
+		    </form>
+			<% end %>
+		<% end %>
+	</div>
+	<% if logged_in? %>
+	  <form action="/<%= name.id %>" method='post'>
+	    <input type='hidden' name="_method" value="delete">
+	    <input type='submit' value='Delete'>
+	  </form>
+	<% end %>
+</div>

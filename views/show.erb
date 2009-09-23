@@ -1,0 +1,9 @@
+<div class="name">
+  <div class="sbody" id="content"><%= "#{@name.name} #{@name.gender}" %></div>
+
+  <div class="sdate">Created on <%= @name.created_at.strftime("%B %d, %Y at %I:%M %p") %></div>
+</div>
+
+<br/><a href="/">See all names</a>
+<br/><a href="/new">Add a new name</a>
+

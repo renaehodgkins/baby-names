@@ -1,0 +1,14 @@
+<div id='names'>
+  <div id='male-names'>
+    <h2>Boy Names</h2>
+		<%= partial(:name, :collection => @male_names) %>
+  </div>
+
+  <div id='female-names'>
+    <h2>Girl Names</h2>
+		<%= partial(:name, :collection => @female_names) %>
+  </div>
+</div>
+<br/>
+
+<a href="/new">Add a new name</a><br>

@@ -1,0 +1,18 @@
+<% if @message %>
+<div id='message'>
+	<%= @message %>
+</div>
+<br/>
+<% end %>
+
+<div class="name">
+  <form action="/" method="POST">
+    <input type="text" name="name_name" id="name_name" rows="20" />
+	<input type="radio" name="gender_gender" id="gender_gender" value="Male" rows="20" /> Male
+	<input type="radio" name="gender_gender" id="gender_gender" value="Female" rows="20" /> Female
+    <br/><input type="submit" value="Save"/>
+  </form>
+</div>
+
+
+<br/><a href="/">Cancel</a>

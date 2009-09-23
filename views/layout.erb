@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title><%= @title || 'Names!' %></title>
+  <style>
+    body {
+      font-family: "Helvetica";
+      margin: 0 auto;
+      width: 500px;
+    }
+
+    #names {
+      float:left;
+      width:100%;
+      padding-bottom: 20px;
+    }
+    
+    #male-names {
+      border-left: 1px solid #ccc;
+      padding-left: 10px;
+      float:left;
+      width:45%;
+    }
+    
+    #female-names {
+      border-left: 1px solid #ccc;
+      padding-left: 10px;
+      float:right;
+      width:45%;
+    }
+
+		.voting form {
+			float:left;
+		}
+		
+		.clearfix{
+			clear:both;
+		}
+  </style>
+  <style></style>
+</head>
+<body>
+  <h1>Baby Names</h1>
+    <table border="0" width="100%" cellpading="10">
+  <td width="50%" valign="top">
+  </td>
+  <%= yield %>
+</body>
+</html>
+
