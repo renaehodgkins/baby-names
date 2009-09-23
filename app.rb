@@ -5,8 +5,8 @@ require 'dm-core'
 require 'dm-timestamps'
 require 'dm-validations'
 require 'sinatra-authentication'
-require 'name'
-require 'vote'
+
+Dir["#{File.dirname(__FILE__)}/models/*.rb"].each {|f| require f}
 
 DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/names.sqlite3")
 DataMapper.auto_upgrade!

@@ -1,6 +1,6 @@
 class Vote
   include DataMapper::Resource
-  property :id,         Integer, :serial => true    # primary serial key
+  property :id,         Serial    # primary serial key
   property :name_id,    Integer
   property :ip,         String
   property :vote,       Integer
@@ -11,5 +11,4 @@ class Vote
   
   validates_is_unique :ip, :scope => :name_id
   validates_within :vote, :set => (1..5)
-  
 end

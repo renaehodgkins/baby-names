@@ -1,6 +1,6 @@
 class Name
   include DataMapper::Resource
-  property :id,         Integer, :serial => true    # primary serial key
+  property :id,         Serial    # primary serial key
   property :gender,     String       
   property :name,       String,  :nullable => false # cannot be null
   property :created_at, DateTime
