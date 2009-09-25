@@ -8,7 +8,8 @@ require 'sinatra-authentication'
 
 Dir["#{File.dirname(__FILE__)}/models/*.rb"].each {|f| require f}
 
-DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/names.sqlite3")
+#DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/names.sqlite3")
+DataMapper.setup(:default, ENV['DATABASE_URL'] || 'sqlite3://my.db')
 DataMapper.auto_upgrade!
 
 helpers do
