@@ -8,6 +8,14 @@
   <div id='header'>
     <h1><a href="/">Naming Together</a></h1>
   </div>
+
+  <% if @message %>
+    <div id='message'>
+      <%= @message %>
+    </div>
+    <br/>
+  <% end %>
+
   <%= yield %>
 </body>
 </html>
