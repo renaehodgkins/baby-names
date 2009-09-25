@@ -1,14 +1,16 @@
 <%= partial(:name, :locals => {:name => @name}) %>
 
-<h3>Comments</h3>
-<% if @name.comments.size == 0 %>
-  <p>There are no comments for this name; be the first!</p>
-<% end %>
 
 <div id="comments">
+  <h3>Comments</h3>
+  <% if @name.comments.size == 0 %>
+    <p>There are no comments for this name; be the first!</p>
+  <% end %>
+
   <% @name.comments.each do |comment| %>
     <div class='comment'>
-      <p><%= comment.author %> - <%= comment.body %></p>
+      <p class='author'><%= comment.author %> <span class='timestamp'>at <%= comment.created_at.strftime('%l:%M%P') %> on <%= comment.created_at.strftime('%m-%d-%Y') %></span></p>
+      <p class='body'><%= comment.body %></p>
     </div>
   <% end %>
 </div>

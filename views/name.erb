@@ -16,7 +16,7 @@
 	</div>
 
   <a href='/<%= name.id %>/comments'>
-    <%= name.comments.size > 0 ? "Comments (#{name.comments.size})" : "New Comment" %>
+    <%= name.comments.size > 0 ? "#{name.comments.size} comments" : "comment" %>
   </a>
 
 	<% if logged_in? %>
