@@ -1,48 +1,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <title><%= @title || 'Naming Together' %></title>
-  <style>
-    body {
-      font-family: "Helvetica";
-      margin: 0 auto;
-      width: 500px;
-    }
-
-    #names {
-      float:left;
-      width:100%;
-      padding-bottom: 20px;
-    }
-    
-    #male-names {
-      border-left: 1px solid #ccc;
-      padding-left: 10px;
-      float:left;
-      width:45%;
-    }
-    
-    #female-names {
-      border-left: 1px solid #ccc;
-      padding-left: 10px;
-      float:right;
-      width:45%;
-    }
-
-		.voting form {
-			float:left;
-		}
-		
-		.clearfix{
-			clear:both;
-		}
-  </style>
-  <style></style>
+  <link type="text/css" rel="stylesheet" media="screen" href="/stylesheet.css">
 </head>
 <body>
   <h1><a href="/">Naming Together</a></h1>
-    <table border="0" width="100%" cellpading="10">
-  <td width="50%" valign="top">
-  </td>
   <%= yield %>
 </body>
 </html>

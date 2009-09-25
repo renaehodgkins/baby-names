@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'sinatra'
+require 'sass'
 require 'lib/partials'
 require 'dm-core'
 require 'dm-timestamps'
@@ -18,6 +19,15 @@ helpers do
     return false unless name.votes.size > 0
     name.votes.first(:ip => @env['REMOTE_ADDR']) ? true : false
   end
+
+  def clearfix
+    "<div class='clearfix'></div>"
+  end
+end
+
+get '/stylesheet.css' do
+  content_type 'text/css', :charset => 'utf-8'
+  sass :stylesheet
 end
 
 get '/' do 

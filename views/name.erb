@@ -1,16 +1,12 @@
 <div class='name'>
-  <b><%= name.name %> - <%= name.average_vote || 'no votes' %></b>
-	<br/>
-	<p><a href='/<%= name.id %>/comments'>
-		<% if name.comments.size > 0 %>
-			Comments (<%= name.comments.size %>)</a>
-		<% else %>
-			New Comment
-		<% end %>
-    </a>
-	</p>
+  <span class='baby_name'><%= name.name %></span>
+
+  <%= clearfix %>
+
 	<div class='voting'>
-		<% unless voted_for?(name) %>
+		<% if voted_for?(name) %>
+      <span class='vote'><%= name.average_vote %></span>
+    <% else %>
 			<% (1..5).each do |number| %>
 				<form action="/<%= name.id %>/vote/<%= number %>" method='post'>
 		      <input type='submit' value='<%= number %>'>
@@ -18,10 +14,19 @@
 			<% end %>
 		<% end %>
 	</div>
+
+  <a href='/<%= name.id %>/comments'>
+    <%= name.comments.size > 0 ? "Comments (#{name.comments.size})" : "New Comment" %>
+  </a>
+
 	<% if logged_in? %>
-	  <form action="/<%= name.id %>" method='post'>
-	    <input type='hidden' name="_method" value="delete">
-	    <input type='submit' value='Delete'>
-	  </form>
-	<% end %>
+    <div class='admin'>
+      <form action="/<%= name.id %>" method='post'>
+        <input type='hidden' name="_method" value="delete">
+        <input type='submit' value='[x]'>
+      </form>
+    </div>
+  <% end %>
+
+
 </div>
