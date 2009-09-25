@@ -30,6 +30,11 @@ get '/stylesheet.css' do
   sass :stylesheet
 end
 
+get '/reset.css' do
+  content_type 'text/css', :charset => 'utf-8'
+  sass :reset
+end
+
 get '/' do 
   @female_names = Name.female
   @male_names = Name.male

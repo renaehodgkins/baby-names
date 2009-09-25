@@ -1,10 +1,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <title><%= @title || 'Naming Together' %></title>
+  <link type="text/css" rel="stylesheet" media="screen" href="/reset.css">
   <link type="text/css" rel="stylesheet" media="screen" href="/stylesheet.css">
 </head>
 <body>
-  <h1><a href="/">Naming Together</a></h1>
+  <div id='header'>
+    <h1><a href="/">Naming Together</a></h1>
+  </div>
   <%= yield %>
 </body>
 </html>

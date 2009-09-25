@@ -1,11 +1,11 @@
 <div class='name'>
-  <span class='baby_name'><%= name.name %></span>
+  <h3><%= name.name %></h3>
 
   <%= clearfix %>
 
 	<div class='voting'>
 		<% if voted_for?(name) %>
-      <span class='vote'><%= name.average_vote %></span>
+      <span class='vote'><%= name.average_vote %> (<%= name.votes.size %>)</span>
     <% else %>
 			<% (1..5).each do |number| %>
 				<form action="/<%= name.id %>/vote/<%= number %>" method='post'>
