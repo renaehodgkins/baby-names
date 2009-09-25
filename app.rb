@@ -47,7 +47,6 @@ end
 
 # create
 post '/' do
-  puts params.inspect
   @name = Name.new(:name => params[:name_name], :gender => params[:gender_gender])
   if @name.save
     redirect '/'
@@ -100,7 +99,8 @@ end
 # create comment
 post '/:id/comments' do
   @name = Name.get(params[:id])
-  @comment = @name.comments.new(:body => params[:comment_body])
+  @comment = @name.comments.new(:body => params[:comment_body],
+                                :author => params[:comment_author] || 'anonymous')
   if @comment.save
     @message = "Commnet saved"
   else

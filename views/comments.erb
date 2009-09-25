@@ -1,13 +1,26 @@
-<h2><%= @name.name %></h2>
+<%= partial(:name, :locals => {:name => @name}) %>
 
-<% @name.comments.each do |comment| %>
-	<p><%= comment.body %></p>
+<h3>Comments</h3>
+<% if @name.comments.size == 0 %>
+  <p>There are no comments for this name; be the first!</p>
 <% end %>
 
-<h3>Add a comment</h3>
-<div class="comment">
+<div id="comments">
+  <% @name.comments.each do |comment| %>
+    <div class='comment'>
+      <p><%= comment.author %> - <%= comment.body %></p>
+    </div>
+  <% end %>
+</div>
+
+<div id="comment_form">
+  <h4>Add a comment</h4>
   <form action="/<%= @name.id %>/comments" method="POST">
+    <label>Name</label>
+    <input type="text" name="comment_author" id="comment_author" rows="4" cols="25"/>
+    <br/>
+    <label>Comment</label>
     <input type="text" name="comment_body" id="comment_body" rows="4" cols="25"/>
-    <br/><input type="submit" value="Submit"/>
+    <br/><input type="submit" value="Comment"/>
   </form>
 </div>
