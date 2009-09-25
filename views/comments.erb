@@ -1,0 +1,13 @@
+<h2><%= @name.name %></h2>
+
+<% @name.comments.each do |comment| %>
+	<p><%= comment.body %></p>
+<% end %>
+
+<h3>Add a comment</h3>
+<div class="comment">
+  <form action="/<%= @name.id %>/comments" method="POST">
+    <input type="text" name="comment_body" id="comment_body" rows="4" cols="25"/>
+    <br/><input type="submit" value="Submit"/>
+  </form>
+</div>
