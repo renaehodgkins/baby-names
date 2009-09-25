@@ -1,12 +1,13 @@
 <div class='name'>
   <b><%= name.name %> - <%= name.average_vote || 'no votes' %></b>
 	<br/>
-	<p>
+	<p><a href='/<%= name.id %>/comments'>
 		<% if name.comments.size > 0 %>
-			<a href='/<%= name.id %>/comments'>Comments (<%= name.comments.size %>)</a>
+			Comments (<%= name.comments.size %>)</a>
 		<% else %>
-			<a href='/<%= name.id %>/comments/new'>New Comment</a>
+			New Comment
 		<% end %>
+    </a>
 	</p>
 	<div class='voting'>
 		<% unless voted_for?(name) %>
