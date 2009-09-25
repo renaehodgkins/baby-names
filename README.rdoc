@@ -2,6 +2,10 @@
 
 Assist parents to be, along with friends and family, with choosing a baby name.
 
+= Application
+
+http://www.namingtogether.com
+
 = Resources
 
 Created by Renae Bair (renaebair@gmail.com) in Maine in late 2009
