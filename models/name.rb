@@ -10,7 +10,6 @@ class Name
   has n, :comments
   
   validates_present :gender, :name
-  use Rack::Session::Cookie, :secret => 'A1 sauce 1s so good you should use 1t on a11 yr st34ksssss'
   
   def self.male
     all(:conditions => ['gender = ?', 'Male'])
