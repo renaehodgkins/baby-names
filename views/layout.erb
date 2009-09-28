@@ -9,9 +9,9 @@
     <h1><a href="/">Naming Together</a></h1>
   </div>
 
-  <% if @message %>
+  <% if session[:flash] %>
     <div id='message'>
-      <%= @message %>
+      <%= session[:flash] %>
     </div>
     <br/>
   <% end %>

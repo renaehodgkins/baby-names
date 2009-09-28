@@ -2,12 +2,14 @@ class Name
   include DataMapper::Resource
   property :id,         Serial    # primary serial key
   property :gender,     String       
+  property :account_id, Integer
   property :name,       String,  :nullable => false # cannot be null
   property :created_at, DateTime
   property :updated_at, DateTime
   
   has n, :votes
   has n, :comments
+  belongs_to :account
   
   validates_present :gender, :name
   

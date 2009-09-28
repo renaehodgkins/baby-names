@@ -12,6 +12,8 @@ Dir["#{File.dirname(__FILE__)}/models/*.rb"].each {|f| require f}
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/names.sqlite3")
 DataMapper.auto_upgrade!
 
+enable :sessions
+
 helpers do
   include Sinatra::Partials
   
