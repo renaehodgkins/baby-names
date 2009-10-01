@@ -1,18 +1,18 @@
 <div class='name'>
   <h3><%= name.name %></h3>
 
-  <%= clearfix %>
 
 	<div class='voting'>
-		<% if voted_for?(name) %>
-      <span class='vote'><%= name.average_vote %> (<%= name.votes.size %>)</span>
-    <% else %>
-			<% (1..5).each do |number| %>
-				<form action="/<%= name.id %>/vote/<%= number %>" method='post'>
-		      <input type='submit' value='<%= number %>'>
-		    </form>
-			<% end %>
-		<% end %>
+    <span class="inline-rating">
+      <ul class="star-rating" id="vote_name_<%= name.id %>">
+        <li class="current-rating" style="width:<%= name.percentage_vote %>%;"><%= name.average_vote ? "#{name.average_vote}/5 stars" : "No ratings" %>.</li>
+        <li><a href="#" title="1 star out of 5" class="one-star">1</a></li>
+        <li><a href="#" title="2 stars out of 5" class="two-stars">2</a></li>
+        <li><a href="#" title="3 stars out of 5" class="three-stars">3</a></li>
+        <li><a href="#" title="4 stars out of 5" class="four-stars">4</a></li>
+        <li><a href="#" title="5 stars out of 5" class="five-stars">5</a></li>
+      </ul>
+    </span>
 	</div>
 
   <a href='/<%= name.id %>/comments'>

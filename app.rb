@@ -27,12 +27,12 @@ helpers do
   end
 end
 
-get '/stylesheet.css' do
+get '/stylesheets/stylesheet.css' do
   content_type 'text/css', :charset => 'utf-8'
   sass :stylesheet
 end
 
-get '/reset.css' do
+get '/stylesheets/reset.css' do
   content_type 'text/css', :charset => 'utf-8'
   sass :reset
 end
@@ -81,15 +81,23 @@ delete '/:id' do
 end
 
 # create vote
-post '/:id/vote/:rank' do
+post '/:id/vote' do
   @name = Name.get(params[:id])
-  @vote = @name.votes.new(:vote => params[:rank], :ip => @env['REMOTE_ADDR']) 
+  @vote = @name.votes.new(:vote => params[:rating], :ip => @env['REMOTE_ADDR']) 
+
   if @vote.save
     @message = "Vote Success"
   else
     @message = "Vote Failed"
   end
-  redirect '/'   
+
+  if request.xhr? 
+    @name.reload
+    "<li class='current-rating' style='width:#{@name.percentage_vote}%'> #{@name.average_vote}/5 ratings.</li>"
+  else
+    redirect '/'   
+  end
+
 end
 
 get '/:id/comments' do

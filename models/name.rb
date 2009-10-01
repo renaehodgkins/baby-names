@@ -24,6 +24,10 @@ class Name
   def average_vote
     return unless votes.size > 0
     all_votes = votes.collect{|vote| vote.vote} # [5, 4, x, x, x]
-    all_votes.inject(0) {|sum, value| sum += value}.to_f / votes.size
+    all_votes.inject(0) {|sum, value| sum += value} / votes.size
+  end
+
+  def percentage_vote
+    (average_vote.to_f / 5 * 100).to_i
   end
 end
