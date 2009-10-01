@@ -9,6 +9,6 @@ class Vote
   
   belongs_to :name
   
-  validates_is_unique :ip, :scope => :name_id
+  #validates_is_unique :ip, :scope => :name_id
   validates_within :vote, :set => (1..5)
 end
