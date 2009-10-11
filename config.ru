@@ -1,3 +1,2 @@
-require 'app'
+require 'baby-names'
 run Sinatra::Application
-
