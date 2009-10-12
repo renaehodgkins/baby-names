@@ -1,18 +1,18 @@
-get '/' do 
+get '/names' do 
   @female_names = Name.female
   @male_names = Name.male
   erb :index
 end
 
-get '/new' do
+get '/names/new' do
   erb :new
 end
 
 # create
-post '/' do
+post '/names' do
   @name = Name.new(:name => params[:name_name], :gender => params[:gender_gender])
   if @name.save
-    redirect '/'
+    redirect '/names'
   else
     @message = 'The name was not saved - please speficy a name AND a gender'
     erb :new
@@ -20,23 +20,23 @@ post '/' do
 end 
 
 # show
-get '/:id' do
+get '/names/:id' do
   @name = Name.get(params[:id])
   if @name
     erb :show
   else
-    redirect '/'
+    redirect '/names'
   end
 end
 
 # destroy
-delete '/:id' do 
+delete '/names/:id' do 
   login_required
   @name = Name.get(params[:id])
   if @name && current_user.admin?
     @name.destroy
-    redirect '/'
+    redirect '/names'
   else
-    redirect '/'
+    redirect '/names'
   end
 end

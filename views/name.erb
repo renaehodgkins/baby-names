@@ -15,13 +15,13 @@
     </span>
 	</div>
 
-  <a href='/<%= name.id %>/comments'>
+  <a href='/names/<%= name.id %>/comments'>
     <%= name.comments.size > 0 ? "#{name.comments.size} comments" : "comment" %>
   </a>
 
 	<% if logged_in? %>
     <div class='admin'>
-      <form action="/<%= name.id %>" method='post'>
+      <form action="/names/<%= name.id %>" method='post'>
         <input type='hidden' name="_method" value="delete">
         <input type='submit' value='[x]'>
       </form>
