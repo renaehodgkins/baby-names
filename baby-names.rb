@@ -5,7 +5,6 @@ require 'lib/partials'
 require 'dm-core'
 require 'dm-timestamps'
 require 'dm-validations'
-require 'sinatra-authentication'
 
 Dir["#{File.dirname(__FILE__)}/models/*.rb"].each {|f| require f}
 Dir["#{File.dirname(__FILE__)}/controllers/*.rb"].each {|f| require f}
@@ -13,7 +12,9 @@ Dir["#{File.dirname(__FILE__)}/controllers/*.rb"].each {|f| require f}
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/names.sqlite3")
 DataMapper.auto_upgrade!
 
-enable :sessions
+configure do
+  enable :sessions
+end
 
 helpers do
   include Sinatra::Partials
@@ -41,3 +42,4 @@ end
 get '/' do
   erb :homepage
 end
+

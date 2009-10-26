@@ -1,0 +1,13 @@
+<h1>Settings</h1>
+<form action="/settings" method="POST">
+  <label>Email:</label>
+  <input type="text" name="user[email]" value='<%= @user.email %>' rows="20" />
+  <%= clearfix %>
+  <label>Password:</label>
+  <input type="password" name="user[password]" rows="20" />
+  <%= clearfix %>
+  <label>Password Confirmation:</label>
+  <input type="password" name="user[password_confirmation]" rows="20" />
+  <br/><input type="submit" value="Save Settings"/>
+</form>
+

@@ -1,2 +1,12 @@
 <h2>Welcome to NamingTogether!</h2>
-<p>Please <a href='/login'>login</a> or <a href='/signup'>signup</a>!</p>
+
+<ul>
+  <% if current_user %>
+    <li><a href='/logout'>logout</a></li>
+    <li><a href='/settings'>settings</a></li>
+  <% else %>
+    <li><a href='/login'>login</a></li> 
+    <li><a href='/signup'>signup</a></li>
+  <% end %>
+  <li><a href='/names'>names</a></li>
+</ul>
