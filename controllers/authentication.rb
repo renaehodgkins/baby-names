@@ -67,6 +67,10 @@ module Sinatra
     def current_user
       User.first(:id => session[:user]) if session[:user]
     end
+
+    def logged_in?
+      !!session[:user]
+    end
   end
 
   register Authentication
