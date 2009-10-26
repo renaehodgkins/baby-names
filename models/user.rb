@@ -14,7 +14,7 @@ class User
   validates_present :password, :unless => Proc.new { |t| t.hashed_password }
   validates_is_confirmed :password
 
-  validates_is_unique :email, :url
+  validates_is_unique :email
 
   has n, :accounts
 
