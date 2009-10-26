@@ -37,7 +37,7 @@ class User
 
     def self.random_string(len)
       chars = ("a".."z").to_a + ("A".."Z").to_a + ("0".."9").to_a
-      1.upto(len).collect { chars[rand(chars.size-1)] }.join
+      1.upto(len).to_a.collect { chars[rand(chars.size-1)] }.join
     end
 end
 
