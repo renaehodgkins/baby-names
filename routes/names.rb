@@ -9,13 +9,15 @@ get '/names/new' do
 end
 
 # create
-post '/names' do
-  @name = Name.new(:name => params[:name_name], :gender => params[:gender_gender])
+post '/lists/:url/names' do
+  puts params.inspect
+  @list = List.all(:url => params[:url]).first
+  @name = @list.names.new(:name => params[:name_name], :gender => params[:gender_gender])
   if @name.save
-    redirect '/names'
+    redirect "/lists/#{@list.url}"
   else
     @message = 'The name was not saved - please speficy a name AND a gender'
-    erb :new
+    redirect "/lists/#{@list.url}"
   end
 end 
 

@@ -28,7 +28,7 @@ module Sinatra
         @user = User.new(params[:user])
         if @user.save
           session[:user] = @user.id
-          redirect '/'
+          redirect "/lists/#{@user.lists.first.url}"
         else
           redirect '/'
         end

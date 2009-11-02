@@ -8,5 +8,12 @@
     <li><a href='/login'>login</a></li> 
     <li><a href='/signup'>signup</a></li>
   <% end %>
-  <li><a href='/names'>names</a></li>
 </ul>
+
+<h3>Lists</h3>
+
+<div class='lists'>
+  <% List.all.each do |list| %>
+    <span><a href='<%= "lists/#{list.url}" %>'><%= list.url %></a></span>
+  <% end %>
+</div>

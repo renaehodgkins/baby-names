@@ -8,5 +8,4 @@ class Comment
   property :author,     String
   
   belongs_to :name
-  
 end
