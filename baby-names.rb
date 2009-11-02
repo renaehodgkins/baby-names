@@ -1,13 +1,13 @@
 require 'rubygems'
 require 'sinatra'
 require 'sass'
-require 'lib/partials'
 require 'dm-core'
 require 'dm-timestamps'
 require 'dm-validations'
 
-Dir["#{File.dirname(__FILE__)}/models/*.rb"].each {|f| require f}
-Dir["#{File.dirname(__FILE__)}/controllers/*.rb"].each {|f| require f}
+%w(lib models routes).each do |path|
+  Dir["#{File.dirname(__FILE__)}/#{path}/*.rb"].each {|f| require f}
+end
 
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/names.sqlite3")
 DataMapper.auto_upgrade!
