@@ -1,3 +1,8 @@
+get '/lists' do
+  @lists = current_user.lists.all
+  erb :lists
+end
+
 get '/lists/:url' do
   @list = List.all(:url => params[:url]).first
   @female_names = @list.names.female

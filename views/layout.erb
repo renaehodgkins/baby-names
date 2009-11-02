@@ -10,7 +10,21 @@
 </head>
 <body>
   <div id='header'>
-    <h1><a href='/'>Naming Together</a></h1>
+    <div id='logo'>
+      <h1><a href='/'>Naming Together</a></h1>
+    </div>
+    <div id='top_links'>
+      <ul>
+        <% if current_user %>
+          <li><a href='/settings'><%= current_user.email %></a></li>
+          <li><a href='/lists'>lists</a></li>
+          <li><a href='/logout'>logout</a></li>
+        <% else %>
+          <li><a href='/login'>login</a></li> 
+          <li><a href='/signup'>signup</a></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 
   <% if session[:flash] %>

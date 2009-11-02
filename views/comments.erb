@@ -1,13 +1,12 @@
 <%= partial(:name, :locals => {:name => @name}) %>
 
-
 <div id="comments">
   <h3>Comments</h3>
-  <% if @name.comments.size == 0 %>
+  <% if @comments.size == 0 %>
     <p>There are no comments for this name; be the first!</p>
   <% end %>
 
-  <% @name.comments.each do |comment| %>
+  <% @comments.each do |comment| %>
     <div class='comment'>
       <p class='author'><%= comment.author %> <span class='timestamp'>at <%= comment.created_at.strftime('%l:%M%P') %> on <%= comment.created_at.strftime('%m-%d-%Y') %></span></p>
       <p class='body'><%= comment.body %></p>
@@ -17,7 +16,9 @@
 
 <div id="comment_form">
   <h4>Add a comment</h4>
-  <form action="/<%= @name.id %>/comments" method="POST">
+  <form action="/lists/<%= @list.url %>/names/<%= @name.id %>/comments" method="POST">
+    <input type="hidden" name="comment_list_id" id="comment_list_id" />
+
     <label>Name</label>
     <input type="text" name="comment_author" id="comment_author" rows="4" cols="25"/>
     <br/>

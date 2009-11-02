@@ -14,16 +14,19 @@
     </span>
 	</div>
 
-  <a href='/names/<%= name.id %>/comments'>
+  <a href='/lists/<%= @list.url %>/names/<%= name.id %>/comments'>
     <%= name.comments.size > 0 ? "#{name.comments.size} comments" : "comment" %>
   </a>
 
-	<% if logged_in? %>
+	<% if logged_in? && current_user.lists.include?(@list) %>
     <div class='admin'>
       <form action="/names/<%= name.id %>" method='post'>
         <input type='hidden' name="_method" value="delete">
         <input type='submit' value='[x]'>
       </form>
     </div>
+  <% else %>
+    <br/>
+    <br/>
   <% end %>
 </div>
