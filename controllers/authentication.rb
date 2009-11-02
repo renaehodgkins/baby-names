@@ -17,7 +17,7 @@ module Sinatra
 
       get '/logout' do
         session[:user] = nil
-        redirect '/'
+        redirect '/login'
       end
 
       get '/signup' do
