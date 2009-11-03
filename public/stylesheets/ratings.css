@@ -1,0 +1,94 @@
+.inline-rating{
+  display:-moz-inline-block;
+  display:-moz-inline-box;
+  display:inline-block;
+  vertical-align: middle;
+}
+
+#male-names .star-rating,
+#male-names .star-rating a:hover,
+#male-names .star-rating a:active,
+#male-names .star-rating a:focus,
+#male-names .star-rating .current-rating{	
+  background: url(/images/star-collective-boy.gif) left -1000px repeat-x;
+}
+
+#female-names .star-rating,
+#female-names .star-rating a:hover,
+#female-names .star-rating a:active,
+#female-names .star-rating a:focus,
+#female-names .star-rating .current-rating{	
+  background: url(/images/star-collective-girl.gif) left -1000px repeat-x;
+}
+
+#female-names .star-rating, 
+#male-names .star-rating {
+  position:relative;
+  width:160px;
+  height:32px;
+  overflow:hidden;
+  list-style:none;
+  margin:0;
+  padding:0;
+  background-position: left top;
+}
+
+.star-rating li{
+  display: inline;
+}
+
+#female-names .star-rating a,
+#female-names .star-rating .current-rating, 
+#male-names .star-rating a,
+#male-names .star-rating .current-rating {
+  position:absolute;
+  top:0;
+  left:0;
+  text-indent:-1000em;
+  height:32px;
+  line-height:32px;
+  outline:none;
+  overflow:hidden;
+  border: none;
+}
+
+#female-names .star-rating a:hover,
+#female-names .star-rating a:active,
+#female-names .star-rating a:focus, 
+#male-names .star-rating a:hover,
+#male-names .star-rating a:active,
+#male-names .star-rating a:focus{
+  background-position: left bottom;
+}
+
+#female-names .star-rating a.one-star,
+#male-names .star-rating a.one-star{
+  width:20%;
+  z-index:6;
+}
+#female-names .star-rating a.two-stars,
+#male-names .star-rating a.two-stars{
+  width:40%;
+  z-index:5;
+}
+#female-names .star-rating a.three-stars,
+#male-names .star-rating a.three-stars{
+  width:60%;
+  z-index:4;
+}
+#female-names .star-rating a.four-stars,
+#male-names .star-rating a.four-stars{
+  width:80%;
+  z-index:3;
+}
+#female-names .star-rating a.five-stars,
+#male-names .star-rating a.five-stars{
+  width:100%;
+  z-index:2;
+}
+#female-names .star-rating .current-rating,
+#male-names .star-rating .current-rating{
+  z-index:1;
+  background-position: left center;
+}
+
