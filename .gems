@@ -1,4 +1,4 @@
-dm-core --version 0.10.1
-dm-timestamps --version 0.10.1
-dm-validations --version 0.10.1
+dm-core --version 0.9.11
+dm-timestamps --version 0.9.11
+dm-validations --version 0.9.11
 
