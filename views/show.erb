@@ -1,9 +1,12 @@
-<div class="name">
-  <div class="sbody" id="content"><%= "#{@name.name} #{@name.gender}" %></div>
+<h2><%= @name.name %></h2>
+<p>Usually a <%= @name.gender.capitalize %> name</p>
+<p>Created on <%= @name.created_at.strftime("%B %d, %Y at %I:%M %p") %></p>
 
-  <div class="sdate">Created on <%= @name.created_at.strftime("%B %d, %Y at %I:%M %p") %></div>
-</div>
+<h3>Stats</h3>
+<p>List count: <%= @name.names_count %></p>
+<p>Average rating: <%= @name.average_vote %></p>
 
-<br/><a href="/">See all names</a>
-<br/><a href="/new">Add a new name</a>
-
+<h3>Lists</h3>
+<% @name.lists.each do |list| %>
+  <span><a href='/lists/<%= list.url %>'><%= list.url %></a><span>
+<% end %>

@@ -13,6 +13,6 @@
 
 <div class='lists'>
   <% RootName.all.each do |name| %>
-    <span class='#{name.gender}'><a href='<%= "#" %>'><%= "#{name.name}" %></a></span>
+    <span class='#{name.gender}'><a href='<%= "/names/#{name.name.downcase}" %>'><%= "#{name.name}" %></a></span>
   <% end %>
 </div>

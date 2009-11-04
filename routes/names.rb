@@ -15,8 +15,8 @@ post '/lists/:url/names' do
 end 
 
 # show
-get '/names/:id' do
-  @name = Name.get(params[:id])
+get '/names/:name' do
+  @name = RootName.all(:name => params[:name].capitalize).first
   if @name
     erb :show
   else
