@@ -36,7 +36,7 @@ class Name
     root_name.save
 
     comments.each {|comment| comment.destroy}
-    votes.each {|comment| comment.destroy}
+    votes.each {|vote| vote.destroy}
   end
 
   def average_vote
