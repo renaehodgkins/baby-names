@@ -1,9 +1,3 @@
-get '/names' do 
-  @female_names = Name.female
-  @male_names = Name.male
-  erb :index
-end
-
 get '/names/new' do
   erb :new
 end
