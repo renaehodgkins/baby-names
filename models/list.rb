@@ -13,6 +13,10 @@ class List
     self.url = String.random(7).downcase
   end
 
+  def url=(new_url)
+    attribute_set(:url, new_url.downcase)
+  end
+
   def male_names
     names.all(:conditions => ['gender = ?', 'male'])
   end
