@@ -25,13 +25,10 @@ get '/names/:id' do
 end
 
 # destroy
-delete '/names/:id' do 
+delete '/lists/:url/names/:id' do 
   login_required
-  @name = Name.get(params[:id])
-  if @name && current_user.admin?
-    @name.destroy
-    redirect '/names'
-  else
-    redirect '/names'
-  end
+  @list = List.all(:url => params[:url]).first
+  @name = @list.names.get(params[:id])
+  @name.destroy
+  redirect "/lists/#{@list.url}"
 end

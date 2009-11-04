@@ -20,7 +20,7 @@
 
 	<% if logged_in? && current_user.lists.include?(@list) %>
     <div class='admin'>
-      <form action="/names/<%= name.id %>" method='post'>
+      <form action="/lists/<%= @list.url %>/names/<%= name.id %>" method='post'>
         <input type='hidden' name="_method" value="delete">
         <input type='submit' value='[x]'>
       </form>

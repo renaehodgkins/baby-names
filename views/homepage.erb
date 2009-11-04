@@ -12,7 +12,7 @@
 <h3>Names</h3>
 
 <div class='lists'>
-  <% Name.all.each do |name| %>
-    <span><a href='<%= "#" %>'><%= name.name %></a></span>
+  <% RootName.all.each do |name| %>
+    <span class='#{name.gender}'><a href='<%= "#" %>'><%= "#{name.name}" %></a></span>
   <% end %>
 </div>
