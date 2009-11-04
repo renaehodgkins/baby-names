@@ -4,7 +4,6 @@ end
 
 # create
 post '/lists/:url/names' do
-  puts params.inspect
   @list = List.all(:url => params[:url]).first
   @name = @list.names.new(:name => params[:name_name], :gender => params[:gender_gender])
   if @name.save
