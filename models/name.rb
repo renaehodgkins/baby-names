@@ -13,7 +13,7 @@ class Name
   has n, :comments
 
   belongs_to :list
-  belongs_to :root_name, :counter_cache => true
+  belongs_to :root_name
   
   validates_present :gender, :name
 
@@ -27,11 +27,16 @@ class Name
   end
 
   after :create do |name|
-    root_name.update_attributes(:names_count => root_name.names_count += 1)
+    root_name.names_count = root_name.names_count += 1
+    root_name.save
   end
   
-  after :destroy do |name|
-    root_name.update_attributes(:names_count => root_name.names_count -= 1)
+  before :destroy do |name|
+    root_name.names_count = root_name.names_count -= 1
+    root_name.save
+
+    comments.each {|comment| comment.destroy}
+    votes.each {|comment| comment.destroy}
   end
 
   def average_vote

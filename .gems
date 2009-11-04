@@ -1,3 +1,4 @@
 maxjustus-sinatra-authentication --version '>= 0.0.2' --source http://gems.github.com
-dm-core --version 0.9.10
+dm-core --version 0.10.1
+dm-constraints --version 0.10.1
 

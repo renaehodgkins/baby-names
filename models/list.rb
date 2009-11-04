@@ -10,7 +10,7 @@ class List
   validates_is_unique :url
 
   before :create do
-    self.url = String.random(7).downcase
+    self.url ||= String.random(7).downcase
   end
 
   def url=(new_url)
@@ -23,6 +23,10 @@ class List
 
   def female_names
     names.all(:conditions => ['gender = ?', 'female'])
+  end
+
+  before :destroy do |list|
+    names.each {|name| name.destroy }
   end
 end
 

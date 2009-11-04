@@ -16,3 +16,20 @@ put '/list/:url' do
   @list.update_attributes(:url => params[:list_url])
   redirect "/lists/#{@list.url}"
 end
+
+post '/lists' do
+  login_required
+  @list = current_user.lists.new(:url => params[:list_url])
+  if @list.save
+    redirect "/lists/#{@list.url}"
+  else
+    redirect "/lists/"
+  end
+end
+
+delete '/lists/:url' do
+  login_required
+  @list = current_user.lists.all(:url => params[:url]).first
+  @list.destroy
+  redirect "/lists"
+end

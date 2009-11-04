@@ -4,6 +4,10 @@
     
     <h3>namingtogether.com/lists/<input type="text" name="list_url" id="list_url" value="<%= @list.url %>" /> <input type="submit" value="Change"/></h3>
   </form>
+  <form action="/lists/<%= @list.url %>" method='POST'>
+    <input type='hidden' name="_method" value="delete">
+    <input type='submit' value='[x]'>
+  </form>
 <% else %>
   <h3>namingtogether.com/lists/<%= @list.url %></h3>
 <% end %>

@@ -7,6 +7,10 @@
 <p>Average rating: <%= @name.average_vote %></p>
 
 <h3>Lists</h3>
-<% @name.lists.each do |list| %>
-  <span><a href='/lists/<%= list.url %>'><%= list.url %></a><span>
+<% if @name.lists.size > 0 %>
+  <% @name.lists.each do |list| %>
+    <span><a href='/lists/<%= list.url %>'><%= list.url %></a><span>
+  <% end %>
+<% else %>
+  <span>None</span>
 <% end %>

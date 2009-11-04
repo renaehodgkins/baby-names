@@ -18,6 +18,6 @@ class RootName
   end
 
   def lists
-    names.collect {|name| name.list }
+    names.collect {|name| name.list }.compact
   end
 end
