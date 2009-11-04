@@ -12,5 +12,13 @@ class List
   before :create do
     self.url = String.random(7).downcase
   end
+
+  def male_names
+    names.all(:conditions => ['gender = ?', 'male'])
+  end
+
+  def female_names
+    names.all(:conditions => ['gender = ?', 'female'])
+  end
 end
 

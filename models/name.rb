@@ -13,14 +13,6 @@ class Name
   
   validates_present :gender, :name
   
-  def self.male
-    all(:conditions => ['gender = ?', 'male'])
-  end
-
-  def self.female
-    all(:conditions => ['gender = ?', 'female'])
-  end
- 
   def average_vote
     return unless votes.size > 0
     all_votes = votes.collect{|vote| vote.vote} # [5, 4, x, x, x]

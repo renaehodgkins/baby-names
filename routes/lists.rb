@@ -5,8 +5,8 @@ end
 
 get '/lists/:url' do
   @list = List.all(:url => params[:url]).first
-  @female_names = @list.names.female
-  @male_names   = @list.names.male
+  @female_names = @list.female_names
+  @male_names   = @list.male_names
   erb :list
 end
 
