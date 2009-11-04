@@ -27,13 +27,11 @@ class Name
   end
 
   after :create do |name|
-    root_name.names_count = root_name.names_count += 1
-    root_name.save
+    root_name.update_attributes(:names_count => root_name.names_count += 1)
   end
   
   before :destroy do |name|
-    root_name.names_count = root_name.names_count -= 1
-    root_name.save
+    root_name.update_attributes(:names_count => root_name.names_count -= 1)
 
     comments.each {|comment| comment.destroy}
     votes.each {|vote| vote.destroy}
