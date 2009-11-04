@@ -11,7 +11,6 @@ get '/lists/:url' do
 end
 
 put '/list/:url' do
-  puts params.inspect
   @list = List.all(:url => params[:url]).first
   redirect "/lists/#{@list.url}" unless current_user.lists.include?(@list)
   @list.update_attributes(:url => params[:list_url])
