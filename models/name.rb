@@ -16,6 +16,7 @@ class Name
   belongs_to :root_name
   
   validates_present :gender, :name
+  validates_is_unique :name, :scope => :list_id
 
   def name=(new_name)
     attribute_set(:name, new_name.capitalize)

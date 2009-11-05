@@ -17,13 +17,13 @@ put '/list/:url' do
   redirect "/lists/#{@list.url}"
 end
 
-post '/lists' do
+post '/ ' do
   login_required
   @list = current_user.lists.new(:url => params[:list_url])
   if @list.save
     redirect "/lists/#{@list.url}"
   else
-    redirect "/lists/"
+    erb "/lists"
   end
 end
 

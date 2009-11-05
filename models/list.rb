@@ -6,9 +6,9 @@ class List
 
   belongs_to :user
   has n, :names
-
-  validates_is_unique :url
-
+  
+  validates_is_unique :url, :message => "That list name is already in use, please choose a unique list name."
+  
   before :create do
     self.url ||= String.random(7).downcase
   end
