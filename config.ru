@@ -1,2 +1,2 @@
-require 'baby-names'
+require 'namingtogether'
 run Sinatra::Application
