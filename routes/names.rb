@@ -1,16 +1,9 @@
-get '/names' do 
-  @female_names = Name.female
-  @male_names = Name.male
-  erb :index
-end
-
 get '/names/new' do
   erb :new
 end
 
 # create
 post '/lists/:url/names' do
-  puts params.inspect
   @list = List.all(:url => params[:url]).first
   @name = @list.names.new(:name => params[:name_name], :gender => params[:gender_gender])
   if @name.save
@@ -22,8 +15,8 @@ post '/lists/:url/names' do
 end 
 
 # show
-get '/names/:id' do
-  @name = Name.get(params[:id])
+get '/names/:name' do
+  @name = RootName.all(:name => params[:name].capitalize).first
   if @name
     erb :show
   else
@@ -32,13 +25,10 @@ get '/names/:id' do
 end
 
 # destroy
-delete '/names/:id' do 
+delete '/lists/:url/names/:id' do 
   login_required
-  @name = Name.get(params[:id])
-  if @name && current_user.admin?
-    @name.destroy
-    redirect '/names'
-  else
-    redirect '/names'
-  end
+  @list = List.all(:url => params[:url]).first
+  @name = @list.names.get(params[:id])
+  @name.destroy
+  redirect "/lists/#{@list.url}"
 end

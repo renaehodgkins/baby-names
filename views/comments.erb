@@ -1,4 +1,10 @@
-<%= partial(:name, :locals => {:name => @name}) %>
+<p><a href='/lists/<%= @list.url %>'>&laquo; Return to <%= @list.url %></a></p>
+<br/>
+<div class='wide'>
+  <div id='<%= @name.gender %>-names'>
+    <%= partial(:name, :locals => {:name => @name}) %>
+  </div>
+</div>
 
 <div id="comments">
   <h3>Comments</h3>

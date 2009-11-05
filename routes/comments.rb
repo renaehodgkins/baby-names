@@ -1,6 +1,6 @@
-get '/lists/:url/names/:id/comments' do
+get '/lists/:url/:name' do
   @list = List.all(:url => params[:url]).first
-  @name = Name.all(:id => params[:id]).first
+  @name = @list.names.all(:name.like => params[:name]).first
   @comments = @name.comments.all(:list_id => @list.id)
   erb :comments
 end
@@ -19,5 +19,5 @@ post '/lists/:url/names/:id/comments' do
     @message = "Unable to save comment"
   end
 
-  redirect "/lists/#{@list.url}/names/#{@name.id}/comments"
+  redirect "/lists/#{@list.url}/#{@name.name}"
 end

@@ -1,6 +1,18 @@
 <h2>Your Lists</h2>
 <ul>
 <% @lists.each do |list| %>
-  <li><a href='/lists/<%= list.url %>'><%= list.url %></a></li>
+  <li>
+    <a href='/lists/<%= list.url %>'><%= list.url %></a>
+    <form action="/lists/<%= list.url %>" method='POST'>
+      <input type='hidden' name="_method" value="delete">
+      <input type='submit' value='[x]'>
+    </form>
+  </li>
 <% end %>
 </ul>
+
+<form action='/lists' method='POST'>
+  <input type='text' name='list_url' id='list_url'>
+  <br/><input type="submit" value="Create a new list"/>
+</form>
+

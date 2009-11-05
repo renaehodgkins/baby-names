@@ -30,7 +30,7 @@ module Sinatra
           session[:user] = @user.id
           redirect "/lists/#{@user.lists.first.url}"
         else
-          redirect '/'
+          redirect '/signup'
         end
       end
 

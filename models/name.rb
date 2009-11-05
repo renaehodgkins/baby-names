@@ -1,26 +1,43 @@
 class Name
   include DataMapper::Resource
-  property :id,         Serial
-  property :gender,     String       
-  property :account_id, Integer
-  property :name,       String,  :nullable => false
-  property :created_at, DateTime
-  property :updated_at, DateTime
+
+  property :id,             Serial
+  property :gender,         String       
+  property :list_id,        Integer
+  property :root_name_id, Integer
+  property :name,           String,  :nullable => false
+  property :created_at,     DateTime
+  property :updated_at,     DateTime
   
   has n, :votes
   has n, :comments
+
   belongs_to :list
+  belongs_to :root_name
   
   validates_present :gender, :name
-  
-  def self.male
-    all(:conditions => ['gender = ?', 'male'])
+  validates_is_unique :name, :scope => :list_id
+
+  def name=(new_name)
+    attribute_set(:name, new_name.capitalize)
   end
 
-  def self.female
-    all(:conditions => ['gender = ?', 'female'])
+  before :create do |name|
+    root_name = RootName.all(:name => self.name, :gender => self.gender).first || RootName.create(:name => self.name, :gender => self.gender)
+    self.root_name_id = root_name.id
   end
- 
+
+  after :create do |name|
+    root_name.update_attributes(:names_count => root_name.names_count += 1)
+  end
+  
+  before :destroy do |name|
+    root_name.update_attributes(:names_count => root_name.names_count -= 1)
+
+    comments.each {|comment| comment.destroy}
+    votes.each {|vote| vote.destroy}
+  end
+
   def average_vote
     return unless votes.size > 0
     all_votes = votes.collect{|vote| vote.vote} # [5, 4, x, x, x]
