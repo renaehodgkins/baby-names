@@ -1,7 +1,12 @@
 # create vote
 post '/:id/vote' do
   @name = Name.get(params[:id])
-  @vote = @name.votes.new(:vote => params[:rating], :ip => @env['REMOTE_ADDR']) 
+  @vote = @name.votes.all(:ip => @env['REMOTE_ADDR']).first
+  if @vote
+    @vote.vote = params[:rating]
+  else
+    @vote = @name.votes.new(:vote => params[:rating], :ip => @env['REMOTE_ADDR']) 
+  end
 
   if @vote.save
     @message = "Vote Success"
