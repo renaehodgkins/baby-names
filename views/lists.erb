@@ -5,7 +5,7 @@
     <a href='/lists/<%= list.url %>'><%= list.url %></a>
     <form action="/lists/<%= list.url %>" method='POST'>
       <input type='hidden' name="_method" value="delete">
-      <input type='submit' value='[x]'>
+      <input type='submit' value='[delete list]'>
     </form>
   </li>
 <% end %>

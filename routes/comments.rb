@@ -21,3 +21,14 @@ post '/lists/:url/names/:id/comments' do
 
   redirect "/lists/#{@list.url}/#{@name.name}"
 end
+
+delete '/lists/:url/:name_id/comments/:id' do
+  login_required
+  @list = current_user.lists.all(:url => params[:url]).first
+  @name = @list.names.get(params[:name_id])
+  puts @name.inspect
+  @comment = @name.comments.get(params[:id])
+  @comment.destroy
+  flash[:notice] = "Comment removed."
+  redirect "/lists/#{@list.url}/#{@name.name.downcase}"
+end

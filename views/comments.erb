@@ -16,6 +16,11 @@
     <div class='comment'>
       <p class='author'><%= comment.author %> <span class='timestamp'>at <%= comment.created_at.strftime('%l:%M%P') %> on <%= comment.created_at.strftime('%m-%d-%Y') %></span></p>
       <p class='body'><%= comment.body %></p>
+
+      <form action="/lists/<%= @list.url %>/<%= @name.id %>/comments/<%= comment.id %>" method='POST'>
+        <input type='hidden' name="_method" value="delete">
+        <input type='submit' value='[delete comment]'>
+      </form>
     </div>
   <% end %>
 </div>
