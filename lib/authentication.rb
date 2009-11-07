@@ -24,15 +24,18 @@ module Sinatra
       end
 
       get '/signup' do
+        @list = List.new
         erb :signup
       end
 
       post '/signup' do
         @user = User.new(params[:user])
         if @user.save
+          @user.reload
+          @user.lists.create(params[:list])
           session[:user] = @user.id
           flash[:notice] = "Welcome to NamingTogether! This is your first list!"
-          redirect "/lists/#{@user.lists.first.url}"
+          redirect "/list/#{@user.lists.first.url}"
         else
           flash[:error] = 'Oops, we were unable to create your account, please try again.'
           redirect '/signup'

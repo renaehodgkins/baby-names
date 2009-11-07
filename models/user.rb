@@ -30,9 +30,9 @@ class User
     self.hashed_password = User.encrypt(@password, self.salt)
   end
 
-  after :create do
-    lists.create
-  end
+  #after :create do
+  #  lists.create
+  #end
 
   private
     def self.encrypt(pass, salt)
