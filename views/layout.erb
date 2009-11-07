@@ -9,36 +9,54 @@
   <script type="text/javascript" src="/javascripts/application.js"></script>
 </head>
 <body>
-  <div id='header'>
-    <div id='logo'>
-      <h1><a href='/'>Naming Together</a></h1>
-    </div>
-    <div id='top_links'>
-      <ul>
-        <% if current_user %>
-          <li><a href='/settings'><%= current_user.email %></a></li>
-          <li><a href='/lists'>my lists</a></li>
-          <li><a href='/logout'>logout</a></li>
-        <% else %>
-          <li><a href='/login'>login</a></li> 
-          <li><a href='/signup'>signup</a></li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
+  <div id="outer-wrapper">
+    <div id="wrapper">
 
-  <% if session[:flash] %>
-    <div id='message'>
-      <%= session[:flash] %>
+      <div id='header'>
+        <div id='logo'>
+          <h1><a href='/'>Naming Together</a></h1>
+        </div>
+        <div id='top_links'>
+          <ul>
+            <% if current_user %>
+              <li><a href='/settings'><%= current_user.email %></a></li>
+              <li><a href='/lists'>my lists</a></li>
+              <li><a href='/logout'>logout</a></li>
+            <% else %>
+              <li><a href='/login'>login</a></li> 
+              <li><a href='/signup'>signup</a></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+
+      <div id="flash-container">
+        <div class='container'>
+          <% if flash[:error] %>
+            <div class="flash" id="flash_error">
+              <div class='container'>
+                <p><%= flash[:error] %></p>
+              </div>
+            </div>
+          <% else %>
+            <div class="flash" id="flash_notice">
+              <div class='container'>
+                <p><%= flash[:notice] %></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      
+      <div id="content">
+        <%= yield %>
+      </div>
+
+      <%= clearfix %>
+      <div id='footer'>
+        Renae Bair &copy; 2009
+      </div>
     </div>
-    <br/>
-  <% end %>
-
-  <%= yield %>
-
-  <%= clearfix %>
-  <div id='footer'>
-    Renae Bair &copy; 2009
   </div>
 </body>
 </html>

@@ -4,6 +4,7 @@ require 'sass'
 require 'dm-core'
 require 'dm-timestamps'
 require 'dm-validations'
+require 'rack-flash'
 
 %w(lib models routes).each do |path|
   Dir["#{File.dirname(__FILE__)}/#{path}/*.rb"].each {|f| require f}
@@ -11,6 +12,8 @@ end
 
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/names.sqlite3")
 DataMapper.auto_upgrade!
+
+use Rack::Flash
 
 configure do
   enable :sessions

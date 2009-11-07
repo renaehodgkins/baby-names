@@ -9,14 +9,17 @@ module Sinatra
       post '/login' do
         if user = User.authenticate(params[:email], params[:password])
           session[:user] = user.id
-          redirect '/'
+          flash[:notice] = "Welcome back #{user.email}"
+          redirect '/lists'
         else
+          flash[:error] = 'Invalid email address or password'
           redirect '/login'
         end
       end
 
       get '/logout' do
         session[:user] = nil
+        flash[:notice] = 'Logged out successfully.'
         redirect '/login'
       end
 
@@ -28,8 +31,10 @@ module Sinatra
         @user = User.new(params[:user])
         if @user.save
           session[:user] = @user.id
+          flash[:notice] = "Welcome to NamingTogether! This is your first list!"
           redirect "/lists/#{@user.lists.first.url}"
         else
+          flash[:error] = 'Oops, we were unable to create your account, please try again.'
           redirect '/signup'
         end
       end
@@ -50,8 +55,10 @@ module Sinatra
 
         user = User.first(:id => current_user.id)
         if user.update_attributes(params[:user])
+          flash[:notice] = "Settings updated."
           redirect "/"
         else
+          flash[:error] = "Oops, we unable to save your settings, please try again."
           erb :settings
         end
       end
