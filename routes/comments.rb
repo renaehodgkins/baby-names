@@ -14,9 +14,9 @@ post '/lists/:url/names/:id/comments' do
                                 :author => params[:comment_author] || 'anonymous',
                                 :list_id => @list.id)
   if @comment.save
-    @message = "Commnet saved"
+    flash[:notice] = "Commentent saved."
   else
-    @message = "Unable to save comment"
+    flash[:error] = "Oops, we were unable to save your comment."
   end
 
   redirect "/lists/#{@list.url}/#{@name.name}"
