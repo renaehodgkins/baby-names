@@ -1,0 +1,4 @@
+<h3>namingtogether.com/lists/<input type="text" name="list[url]" id="list_url" value="<%= @list.url %>" /> <br/>
+<input type="radio" name="list[gender]" value="male" <%= 'checked' if @list.gender == 'male' %>> Male<br/>
+<input type="radio" name="list[gender]" value="female" <%= 'checked' if @list.gender == 'female' %>> Female<br/> 
+<input type="radio" name="list[gender]" value="both" <%= 'checked' if @list.gender == 'both' %>> Both<br/> 

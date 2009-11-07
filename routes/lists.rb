@@ -3,37 +3,50 @@ get '/lists' do
   erb :lists
 end
 
-get '/lists/:url' do
+get '/list/:url' do
   @list = List.all(:url => params[:url]).first
   @female_names = @list.female_names
   @male_names   = @list.male_names
   erb :list
 end
 
-put '/list/:url' do
+get '/lists/new' do
+  login_required
+  @list = current_user.lists.new
+  erb :list_new
+end
+
+get '/lists/:url/edit' do
+  login_required
   @list = current_user.lists.all(:url => params[:url]).first
-  if @list.update_attributes(:url => params[:list_url])
+  erb :list_edit
+end
+
+put '/list/:url' do
+  puts params.inspect
+  @list = current_user.lists.all(:url => params[:url]).first
+  if @list.update_attributes(params[:list])
     flash[:notice] = "List '#{@list.url}' updated successfully."
   else
     @list.reload
     flash[:error] = "Oops, we were unable to update your list"
   end
-  redirect "/lists/#{@list.url}"
+  redirect "/list/#{@list.url}"
 end
 
-post '/ ' do
+post '/lists' do
   login_required
-  @list = current_user.lists.new(:url => params[:list_url])
+  @list = current_user.lists.new(params[:list])
   if @list.save
     flash[:notice] = "List #{@list.url} has been created."
-    redirect "/lists/#{@list.url}"
+    redirect "/list/#{@list.url}"
   else
     flash[:error] = "Oops, we were unable to create your list"
     erb "/lists"
   end
 end
 
-delete '/lists/:url' do
+delete '/list/:url' do
   login_required
   @list = current_user.lists.all(:url => params[:url]).first
   @list.destroy

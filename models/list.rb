@@ -3,6 +3,7 @@ class List
   property :id,         Serial
   property :user_id,    Integer       
   property :url,        String
+  property :gender,     String
 
   belongs_to :user
   has n, :names
@@ -25,6 +26,18 @@ class List
 
   def female_names
     names.all(:conditions => ['gender = ?', 'female'])
+  end
+
+  def male?
+    gender == 'male'
+  end
+
+  def female?
+    gender == 'female'
+  end
+
+  def both?
+    gender == 'both'
   end
 
   before :destroy do |list|

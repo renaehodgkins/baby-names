@@ -2,17 +2,10 @@
 <ul>
 <% @lists.each do |list| %>
   <li>
-    <a href='/lists/<%= list.url %>'><%= list.url %></a>
-    <form action="/lists/<%= list.url %>" method='POST'>
-      <input type='hidden' name="_method" value="delete">
-      <input type='submit' value='[delete list]'>
-    </form>
+    <a href='/list/<%= list.url %>'><%= list.url %></a> | <a href='/lists/<%= list.url %>/edit'>edit</a>
   </li>
 <% end %>
 </ul>
-
-<form action='/lists' method='POST'>
-  <input type='text' name='list_url' id='list_url'>
-  <br/><input type="submit" value="Create a new list"/>
-</form>
+<hr/>
+<a href='/lists/new'>Create a new list</a>
 

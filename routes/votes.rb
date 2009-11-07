@@ -9,9 +9,9 @@ post '/:id/vote' do
   end
 
   if @vote.save
-    @message = "Vote Success"
+    flash[:notice] = "Voted!"
   else
-    @message = "Vote Failed"
+    flash[:error] = "Oops, we were unable to save your vote."
   end
 
   if request.xhr? 

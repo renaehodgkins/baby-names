@@ -1,10 +1,9 @@
-get '/lists/:url/:name' do
+get '/lists/:url/:name/comments' do
   @list = List.all(:url => params[:url]).first
   @name = @list.names.all(:name.like => params[:name]).first
   @comments = @name.comments.all(:list_id => @list.id)
   erb :comments
 end
-
 
 # create comment
 post '/lists/:url/names/:id/comments' do
@@ -19,7 +18,7 @@ post '/lists/:url/names/:id/comments' do
     flash[:error] = "Oops, we were unable to save your comment."
   end
 
-  redirect "/lists/#{@list.url}/#{@name.name}"
+  redirect "/lists/#{@list.url}/#{@name.name.downcase}/comments"
 end
 
 delete '/lists/:url/:name_id/comments/:id' do
@@ -30,5 +29,5 @@ delete '/lists/:url/:name_id/comments/:id' do
   @comment = @name.comments.get(params[:id])
   @comment.destroy
   flash[:notice] = "Comment removed."
-  redirect "/lists/#{@list.url}/#{@name.name.downcase}"
+  redirect "/lists/#{@list.url}/#{@name.name.downcase}/comments"
 end

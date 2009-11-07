@@ -9,7 +9,7 @@
 <h3>Lists</h3>
 <% if @name.lists.size > 0 %>
   <% @name.lists.each do |list| %>
-    <span><a href='/lists/<%= list.url %>'><%= list.url %></a><span>
+    <span><a href='/list/<%= list.url %>'><%= list.url %></a><span>
   <% end %>
 <% else %>
   <span>None</span>
