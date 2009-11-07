@@ -16,7 +16,7 @@ put '/list/:url' do
     flash[:notice] = "List '#{@list.url}' updated successfully."
   else
     @list.reload
-    flash[:error]  = "List names must be at least 4 characters long and can include letters, numbers, dashes, and underscores."
+    flash[:error] = "Oops, we were unable to update your list"
   end
   redirect "/lists/#{@list.url}"
 end
@@ -25,8 +25,10 @@ post '/ ' do
   login_required
   @list = current_user.lists.new(:url => params[:list_url])
   if @list.save
+    flash[:notice] = "List #{@list.url} has been created."
     redirect "/lists/#{@list.url}"
   else
+    flash[:error] = "Oops, we were unable to create your list"
     erb "/lists"
   end
 end
@@ -35,5 +37,6 @@ delete '/lists/:url' do
   login_required
   @list = current_user.lists.all(:url => params[:url]).first
   @list.destroy
+  flash[:notice] = "List has been deleted."
   redirect "/lists"
 end
