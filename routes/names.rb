@@ -7,9 +7,10 @@ post '/lists/:url/names' do
   @list = List.all(:url => params[:url]).first
   @name = @list.names.new(:name => params[:name_name], :gender => params[:gender_gender])
   if @name.save
+    flash[:notice] = "#{@name.name} has been added to the list."
     redirect "/lists/#{@list.url}"
   else
-    @message = 'The name was not saved - please speficy a name AND a gender'
+    flash[:error] = 'Oops, we were unable to save your name.'
     redirect "/lists/#{@list.url}"
   end
 end 
@@ -30,5 +31,6 @@ delete '/lists/:url/names/:id' do
   @list = List.all(:url => params[:url]).first
   @name = @list.names.get(params[:id])
   @name.destroy
+  flash[:notice] = "The name has been removed from your list."
   redirect "/lists/#{@list.url}"
 end
