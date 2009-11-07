@@ -11,9 +11,13 @@ get '/lists/:url' do
 end
 
 put '/list/:url' do
-  @list = List.all(:url => params[:url]).first
-  redirect "/lists/#{@list.url}" unless current_user.lists.include?(@list)
-  @list.update_attributes(:url => params[:list_url])
+  @list = current_user.lists.all(:url => params[:url]).first
+  if @list.update_attributes(:url => params[:list_url])
+    flash[:notice] = "List '#{@list.url}' updated successfully."
+  else
+    @list.reload
+    flash[:error]  = "List names must be at least 4 characters long and can include letters, numbers, dashes, and underscores."
+  end
   redirect "/lists/#{@list.url}"
 end
 

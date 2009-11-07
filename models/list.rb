@@ -7,6 +7,8 @@ class List
   belongs_to :user
   has n, :names
   
+  validates_present :url
+  validates_length :url, :min => 4
   validates_is_unique :url, :message => "That list name is already in use, please choose a unique list name."
   
   before :create do
@@ -14,7 +16,7 @@ class List
   end
 
   def url=(new_url)
-    attribute_set(:url, new_url.downcase)
+    attribute_set(:url, new_url.downcase.gsub(/\W/, '-'))
   end
 
   def male_names
