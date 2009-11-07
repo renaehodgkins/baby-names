@@ -14,7 +14,7 @@ post '/lists/:url/names/:id/comments' do
                                 :author => params[:comment_author] || 'anonymous',
                                 :list_id => @list.id)
   if @comment.save
-    flash[:notice] = "Commentent saved."
+    flash[:notice] = "Comment saved."
   else
     flash[:error] = "Oops, we were unable to save your comment."
   end
