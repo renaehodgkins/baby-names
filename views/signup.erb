@@ -1,4 +1,5 @@
 <h1>Signup</h1>
+<%= error_messages_for(@user) %>
 <form action="/signup" method="POST">
   <label>Email:</label>
   <input type="text" name="user[email]" rows="20" />
@@ -8,10 +9,7 @@
   <%= clearfix %>
   <label>Password Confirmation:</label>
   <input type="password" name="user[password_confirmation]" rows="20" />
-  <hr/>
-  <h2>Your first list</h2>
-  <%= partial(:list_fields) %>
-
-  <br/><input type="submit" value="Signup"/>
+  <br/>
+  <input type="submit" value="Signup"/>
 </form>
 

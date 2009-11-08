@@ -10,7 +10,8 @@ class List
   
   validates_present :url
   validates_length :url, :min => 4
-  validates_is_unique :url, :message => "That list name is already in use, please choose a unique list name."
+  validates_is_unique :url, :message => "Url is already in use, please choose a unique url"
+  validates_present :gender, :message => "Please select a gender"
   
   before :create do
     self.url ||= String.random(7).downcase

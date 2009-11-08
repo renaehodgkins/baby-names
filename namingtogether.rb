@@ -30,6 +30,13 @@ helpers do
   def clearfix
     "<div class='clearfix'></div>"
   end
+
+  def error_messages_for(model)
+    return unless model.errors
+    puts model.errors.inspect
+    errors = model.errors.full_messages.collect {|message| "<p>#{message}</p>"}.join(" ")
+    "<div id='errors'>#{errors}</div>"
+  end
 end
 
 get '/stylesheets/stylesheet.css' do

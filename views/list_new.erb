@@ -1,5 +1,6 @@
 <p><a href='/lists'>&laquo; Return to your lists</a></p>
 
+<%= error_messages_for(@list) %>
 <form action="/lists" method='POST' class='list_form'>
   <%= partial(:list_fields) %>
   <input type="submit" value="Create list"/></h3>

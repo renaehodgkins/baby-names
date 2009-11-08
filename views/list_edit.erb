@@ -1,13 +1,14 @@
 <p><a href='/list/<%= @list.url %>'>&laquo; Return to <%= @list.url %></a></p>
 
-  <form action="/list/<%= @list.url %>" method='POST' class='list_form'>
-    <input type='hidden' name="_method" value="put" />
-    
-    <%= partial(:list_fields) %>
-          
-    <input type="submit" value="Save Changes"/></h3>
-  </form>
-  <form action="/lists/<%= @list.url %>" method='POST'>
-    <input type='hidden' name="_method" value="delete">
-    <input type='submit' value='[delete list]'>
-  </form>
+<%= error_messages_for(@list) %>
+<form action="/list/<%= @list.url %>" method='POST' class='list_form'>
+  <input type='hidden' name="_method" value="put" />
+  
+  <%= partial(:list_fields) %>
+        
+  <input type="submit" value="Save Changes"/></h3>
+</form>
+<form action="/list/<%= @list.url %>" method='POST'>
+  <input type='hidden' name="_method" value="delete">
+  <input type='submit' value='[delete list]'>
+</form>

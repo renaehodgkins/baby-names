@@ -27,22 +27,22 @@ put '/list/:url' do
   @list = current_user.lists.all(:url => params[:url]).first
   if @list.update_attributes(params[:list])
     flash[:notice] = "List '#{@list.url}' updated successfully."
+    redirect "/list/#{@list.url}"
   else
-    @list.reload
     flash[:error] = "Oops, we were unable to update your list"
+    erb :list_edit
   end
-  redirect "/list/#{@list.url}"
 end
 
 post '/lists' do
   login_required
   @list = current_user.lists.new(params[:list])
   if @list.save
-    flash[:notice] = "List #{@list.url} has been created."
+    flash[:notice] = "List '#{@list.url}' has been created."
     redirect "/list/#{@list.url}"
   else
     flash[:error] = "Oops, we were unable to create your list"
-    erb "/lists"
+    erb :list_new
   end
 end
 
