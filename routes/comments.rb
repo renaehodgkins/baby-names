@@ -1,6 +1,8 @@
 get '/lists/:url/:name/comments' do
+  puts params.inspect
   @list = List.all(:url => params[:url]).first
-  @name = Name.all(:name.like => params[:name], :list_id => @list.id).first
+  puts @list.names.inspect
+  @name = @list.names.all(:name.like => params[:name]).first
   @comments = @name.comments.all(:list_id => @list.id)
   erb :comments
 end
