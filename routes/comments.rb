@@ -1,11 +1,10 @@
 get '/lists/:url/:name/comments' do
   @list = List.all(:url => params[:url]).first
-  @name = @list.names.all(:name.like => params[:name]).first
+  @name = Name.all(:name.like => params[:name], :list_id => @list.id).first
   @comments = @name.comments.all(:list_id => @list.id)
   erb :comments
 end
 
-# create comment
 post '/lists/:url/names/:id/comments' do
   @list = List.all(:url => params[:url]).first
   @name = Name.get(params[:id])
