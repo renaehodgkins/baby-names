@@ -1,7 +1,7 @@
 <% if current_user && current_user.lists.include?(@list) %>
-  <h3>namingtogether.com/lists/<%= @list.url %> | <a href='/lists/<%= @list.url %>/edit'>edit</a></h3>
+  <h3>namingtogether.com/list/<%= @list.url %> | <a href='/lists/<%= @list.url %>/edit'>edit</a></h3>
 <% else %>
-  <h3>namingtogether.com/lists/<%= @list.url %></h3>
+  <h3>namingtogether.com/list/<%= @list.url %></h3>
 <% end %>
 <br/>
 <div id='names' class='<%= @list.gender %>'>
