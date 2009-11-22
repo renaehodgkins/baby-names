@@ -9,6 +9,14 @@ require 'dm-validations'
 require 'rack-flash'
 require 'active_support/inflector'
 
+module DataObjects
+  module Postgres
+    module Encoding
+      MAP["unicode"] = "UTF8"
+    end
+  end
+end
+
 %w(lib models routes).each do |path|
   Dir["#{File.dirname(__FILE__)}/#{path}/*.rb"].each {|f| require f}
 end
