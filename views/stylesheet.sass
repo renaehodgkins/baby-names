@@ -44,12 +44,26 @@ a
 
 #male-names
   :float left
-  :width 48%
+  :width 325px
 
 #female-names
   :padding-left 10px
   :float right
-  :width 48%
+  :width 325px
+
+.one-gender
+  #female-names, #male-names
+    :width 100%
+    :padding 0px
+
+  .name
+    :width 325px
+
+  .name.even
+    :float right
+  
+  .name.odd
+    :float left
 
 .wide
   #female-names, #male-names

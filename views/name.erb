@@ -1,4 +1,4 @@
-<div class='name'>
+<div class='name <%= cycle('even', 'odd') %>'>
   <h3><a href="/names/<%= name.name.downcase %>"><%= name.name %></a></h3>
 
 	<div class='voting'>
@@ -30,3 +30,4 @@
     <br/>
   <% end %>
 </div>
+<% reset_cycle %>

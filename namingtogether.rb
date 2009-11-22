@@ -37,6 +37,18 @@ helpers do
     errors = model.errors.full_messages.collect {|message| "<p>#{message}</p>"}.join(" ")
     "<div id='errors'>#{errors}</div>"
   end
+
+  def cycle(*items)
+    @_cycle_reset = items
+    @_cycle ||= items
+    @_cycle.push @_cycle.shift
+    @_cycle.first
+  end
+
+  def reset_cycle
+    @_cycle = @_cycle_reset
+  end
+
 end
 
 get '/stylesheets/stylesheet.css' do

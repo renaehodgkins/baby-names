@@ -4,7 +4,7 @@
   <h3>namingtogether.com/list/<%= @list.url %></h3>
 <% end %>
 <br/>
-<div id='names' class='<%= @list.gender %>'>
+<div id='names' class='<%= @list.gender %> <%= 'one-gender' unless @list.both? %>'>
   <% if @list.male? || @list.both? %>
     <div id='male-names'>
       <h2>Boy Names</h2>
