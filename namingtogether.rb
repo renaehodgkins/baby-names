@@ -1,3 +1,5 @@
+$KCODE = 'UTF8'
+
 require 'rubygems'
 require 'sinatra'
 require 'sass'

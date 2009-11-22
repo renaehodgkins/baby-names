@@ -1,4 +1,3 @@
-require 'base64'
 class Name
   include DataMapper::Resource
 
@@ -40,11 +39,7 @@ class Name
   end
 
   def name=(new_name)
-    attribute_set(:name, Base64::encode64(new_name.capitalize))
-  end
-
-  def name
-    Base64::decode64(attribute_get(:name))
+    attribute_set(:name, new_name.capitalize)
   end
 
   def average_vote
