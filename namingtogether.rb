@@ -54,6 +54,10 @@ helpers do
     return "1 #{word}" if num == 1
     [num, word.pluralize].join(' ')
   end
+
+  def list_owner?
+    logged_in? && current_user.lists.include?(@list)
+  end
 end
 
 get '/stylesheets/stylesheet.css' do

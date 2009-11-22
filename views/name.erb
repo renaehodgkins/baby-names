@@ -18,7 +18,7 @@
     <%= pluralize(name.comments.size, 'comment') %>
   </a>
 
-	<% if logged_in? && current_user.lists.include?(@list) %>
+	<% if list_owner? %>
     <div class='admin'>
       <form action="/lists/<%= @list.url %>/names/<%= name.id %>" method='post'>
         <input type='hidden' name="_method" value="delete">
