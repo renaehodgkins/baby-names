@@ -16,15 +16,6 @@ end
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/names.sqlite3")
 DataMapper.auto_upgrade!
 
-module DataObjects
-  module Postgres
-    module Encoding
-      MAP["unicode"] = "UTF8"
-    end
-  end
-end
-
-
 use Rack::Flash
 
 configure do
