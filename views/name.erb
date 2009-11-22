@@ -1,5 +1,5 @@
 <div class='name <%= cycle('even', 'odd') %>'>
-  <h3><a href="/names/<%= name.to_param %>"><%= name.name %></a></h3>
+  <h3><a href="/names/<%= name.root_name.to_param %>"><%= name.name %></a></h3>
 
 	<div class='voting'>
     <span class="inline-rating">
