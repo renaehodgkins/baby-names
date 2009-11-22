@@ -5,7 +5,7 @@ require 'dm-core'
 require 'dm-timestamps'
 require 'dm-validations'
 require 'rack-flash'
-require 'active_support'
+require 'active_support/inflector'
 
 %w(lib models routes).each do |path|
   Dir["#{File.dirname(__FILE__)}/#{path}/*.rb"].each {|f| require f}
