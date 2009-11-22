@@ -1,4 +1,4 @@
-<form action="/lists/<%= @list.url %>/names" method="POST" class='name_form'>
+<form action="/lists/<%= @list.to_param %>/names" method="POST" class='name_form'>
   <input type="text" name="name_name" id="name_name" rows="20" />
   <input type="hidden" name="gender_gender" id="gender_gender" value="<%= gender %>"/>
   <input type="submit" value="Add a <%= gender == 'male' ? 'boy' : 'girl' %> name"/>

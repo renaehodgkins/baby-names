@@ -1,4 +1,4 @@
-<p><a href='/list/<%= @list.url %>'>&laquo; Return to <%= @list.url %></a></p>
+<p><a href='/list/<%= @list.to_param %>'>&laquo; Return to <%= @list.url %></a></p>
 <br/>
 <div class='wide'>
   <div id='<%= @name.gender %>-names'>
@@ -7,7 +7,7 @@
 </div>
 
 <div id="comments">
-  <h3>Comments</h3>
+  <h3><%= pluralize(@comments.size, 'Comment') %></h3>
   <% if @comments.size == 0 %>
     <p>There are no comments for this name; be the first!</p>
   <% end %>
@@ -18,7 +18,7 @@
       <p class='body'><%= comment.body %></p>
 
       <% if list_owner? %>
-        <form action="/lists/<%= @list.url %>/<%= @name.id %>/comments/<%= comment.id %>" method='POST'>
+        <form action="/lists/<%= @list.to_param %>/<%= @name.id %>/comments/<%= comment.id %>" method='POST'>
           <input type='hidden' name="_method" value="delete">
           <input type='submit' value='[delete comment]'>
         </form>
@@ -29,7 +29,7 @@
 
 <div id="comment_form">
   <h4>Add a comment</h4>
-  <form action="/lists/<%= @list.url %>/names/<%= @name.id %>/comments" method="POST">
+  <form action="/lists/<%= @list.to_param %>/names/<%= @name.id %>/comments" method="POST">
     <input type="hidden" name="comment_list_id" id="comment_list_id" />
 
     <label>Name</label>

@@ -5,7 +5,7 @@
 
 <div class='lists'>
   <% List.all.each do |list| %>
-    <span><a href='<%= "list/#{list.url}" %>'><%= list.url %></a></span>
+    <span><a href='<%= "list/#{list.to_param}" %>'><%= list.url %></a></span>
   <% end %>
 </div>
 

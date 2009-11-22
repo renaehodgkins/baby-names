@@ -11,6 +11,10 @@ class RootName
 
   validates_present :gender, :name
 
+  def to_param
+    "#{id}-#{name.downcase.gsub(/\W/, '-')}"
+  end
+
   def average_vote
     all_votes = names.collect{|name| name.average_vote}.compact
     return 0.0 if all_votes.empty?

@@ -17,6 +17,10 @@ class List
     self.url ||= String.random(7).downcase
   end
 
+  def to_param
+    "#{id}-#{url}"
+  end
+
   def url=(new_url)
     attribute_set(:url, new_url.downcase.gsub(/\W/, '-'))
   end

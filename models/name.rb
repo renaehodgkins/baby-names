@@ -18,10 +18,6 @@ class Name
   validates_present :gender, :name
   validates_is_unique :name, :scope => :list_id
 
-  def name=(new_name)
-    attribute_set(:name, new_name.capitalize)
-  end
-
   before :create do |name|
     root_name = RootName.all(:name => self.name, :gender => self.gender).first || RootName.create(:name => self.name, :gender => self.gender)
     self.root_name_id = root_name.id
@@ -36,6 +32,14 @@ class Name
 
     comments.each {|comment| comment.destroy}
     votes.each {|vote| vote.destroy}
+  end
+
+  def to_param
+    "#{id}-#{name.downcase.gsub(/\W/, '-')}"
+  end
+
+  def name=(new_name)
+    attribute_set(:name, new_name.capitalize)
   end
 
   def average_vote

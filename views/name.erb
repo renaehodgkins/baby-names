@@ -1,5 +1,5 @@
 <div class='name <%= cycle('even', 'odd') %>'>
-  <h3><a href="/names/<%= name.name.downcase %>"><%= name.name %></a></h3>
+  <h3><a href="/names/<%= name.to_param %>"><%= name.name %></a></h3>
 
 	<div class='voting'>
     <span class="inline-rating">
@@ -14,13 +14,15 @@
     </span>
 	</div>
 
-  <a href='/lists/<%= @list.url %>/<%= name.name.downcase %>/comments'>
-    <%= pluralize(name.comments.size, 'comment') %>
-  </a>
+  <span class='comment_count'>
+    <a href='/lists/<%= @list.to_param %>/<%= name.to_param %>/comments'>
+      <%= pluralize(name.comments.size, 'comment') %>
+    </a>
+  </span>
 
 	<% if list_owner? %>
     <div class='admin'>
-      <form action="/lists/<%= @list.url %>/names/<%= name.id %>" method='post'>
+      <form action="/lists/<%= @list.to_param %>/names/<%= name.to_param %>" method='post'>
         <input type='hidden' name="_method" value="delete">
         <input type='submit' value='[delete name]'>
       </form>

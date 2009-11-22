@@ -3,21 +3,21 @@ get '/names/new' do
 end
 
 # create
-post '/lists/:url/names' do
-  @list = List.all(:url => params[:url]).first
+post '/lists/:id/names' do
+  @list = List.get(params[:id])
   @name = @list.names.new(:name => params[:name_name], :gender => params[:gender_gender])
   if @name.save
     flash[:notice] = "#{@name.name} has been added to the list."
-    redirect "/list/#{@list.url}"
+    redirect "/list/#{@list.to_param}"
   else
     flash[:error] = 'Oops, we were unable to save your name.'
-    redirect "/list/#{@list.url}"
+    redirect "/list/#{@list.to_param}"
   end
 end 
 
 # show
-get '/names/:name' do
-  @name = RootName.all(:name => params[:name].capitalize).first
+get '/names/:id' do
+  @name = RootName.get(params[:id])
   if @name
     erb :show
   else
@@ -26,11 +26,11 @@ get '/names/:name' do
 end
 
 # destroy
-delete '/lists/:url/names/:id' do 
+delete '/lists/:list_id/names/:id' do 
   login_required
-  @list = List.all(:url => params[:url]).first
+  @list = List.get(params[:list_id])
   @name = @list.names.get(params[:id])
   @name.destroy
   flash[:notice] = "The name has been removed from your list."
-  redirect "/list/#{@list.url}"
+  redirect "/list/#{@list.to_param}"
 end

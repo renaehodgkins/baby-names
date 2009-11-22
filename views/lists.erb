@@ -2,7 +2,7 @@
 <ul>
 <% @lists.each do |list| %>
   <li>
-    <a href='/list/<%= list.url %>'><%= list.url %></a> | <a href='/lists/<%= list.url %>/edit'>edit</a>
+    <a href='/list/<%= list.to_param %>'><%= list.to_param %></a> | <a href='/lists/<%= list.to_param %>/edit'>edit</a>
   </li>
 <% end %>
 </ul>
