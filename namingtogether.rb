@@ -9,6 +9,13 @@ require 'dm-validations'
 require 'rack-flash'
 require 'active_support/inflector'
 
+%w(lib models routes).each do |path|
+  Dir["#{File.dirname(__FILE__)}/#{path}/*.rb"].each {|f| require f}
+end
+
+DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/names.sqlite3")
+DataMapper.auto_upgrade!
+
 module DataObjects
   module Postgres
     module Encoding
@@ -17,12 +24,6 @@ module DataObjects
   end
 end
 
-%w(lib models routes).each do |path|
-  Dir["#{File.dirname(__FILE__)}/#{path}/*.rb"].each {|f| require f}
-end
-
-DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/names.sqlite3")
-DataMapper.auto_upgrade!
 
 use Rack::Flash
 
