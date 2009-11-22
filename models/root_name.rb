@@ -24,4 +24,8 @@ class RootName
   def lists
     names.collect {|name| name.list }.compact
   end
+
+  def percentage_vote
+    average_vote.to_f / 5 * 100/1
+  end
 end
