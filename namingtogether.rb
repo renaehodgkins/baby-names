@@ -1,3 +1,5 @@
+$KCODE = "U"
+
 require 'rubygems'
 require 'sinatra'
 require 'sass'
