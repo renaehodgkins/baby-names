@@ -5,6 +5,7 @@ require 'dm-core'
 require 'dm-timestamps'
 require 'dm-validations'
 require 'rack-flash'
+require 'active_support'
 
 %w(lib models routes).each do |path|
   Dir["#{File.dirname(__FILE__)}/#{path}/*.rb"].each {|f| require f}
@@ -49,6 +50,10 @@ helpers do
     @_cycle = @_cycle_reset
   end
 
+  def pluralize(num, word)
+    return "1 #{word}" if num == 1
+    [num, word.pluralize].join(' ')
+  end
 end
 
 get '/stylesheets/stylesheet.css' do

@@ -15,7 +15,7 @@
 	</div>
 
   <a href='/lists/<%= @list.url %>/<%= name.name.downcase %>/comments'>
-    <%= name.comments.size > 0 ? "#{name.comments.size} comments" : "comment" %>
+    <%= pluralize(name.comments.size, 'comment') %>
   </a>
 
 	<% if logged_in? && current_user.lists.include?(@list) %>
