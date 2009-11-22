@@ -1,24 +1,27 @@
 <div class='name <%= cycle('even', 'odd') %>'>
-  <h3><a href="/names/<%= name.root_name.to_param %>"><%= name.name %></a></h3>
-
-	<div class='voting'>
-    <span class="inline-rating">
-      <ul class="star-rating" id="vote_name_<%= name.id %>">
-        <li class="current-rating" style="width:<%= name.percentage_vote %>%;"><%= name.average_vote ? "#{name.average_vote}/5 stars" : "No ratings" %>.</li>
-        <li><a href="#" title="1 star out of 5" class="one-star">1</a></li>
-        <li><a href="#" title="2 stars out of 5" class="two-stars">2</a></li>
-        <li><a href="#" title="3 stars out of 5" class="three-stars">3</a></li>
-        <li><a href="#" title="4 stars out of 5" class="four-stars">4</a></li>
-        <li><a href="#" title="5 stars out of 5" class="five-stars">5</a></li>
-      </ul>
+  <div class='left_column'>
+    <h3><a href='/lists/<%= @list.to_param %>/<%= name.to_param %>/comments'><%= name.name %></a></h3>
+    <div class='info'><a href='/names/<%= name.root_name.to_param %>'>Etymology</a></div>
+    <span class='comment_count'>
+      <a href='/lists/<%= @list.to_param %>/<%= name.to_param %>/comments'>
+        <%= pluralize(name.comments.size, 'comment') %>
+      </a>
     </span>
-	</div>
-
-  <span class='comment_count'>
-    <a href='/lists/<%= @list.to_param %>/<%= name.to_param %>/comments'>
-      <%= pluralize(name.comments.size, 'comment') %>
-    </a>
-  </span>
+  </div>
+  <div class='right_column'>
+    <div class='voting'>
+      <span class="inline-rating">
+        <ul class="star-rating" id="vote_name_<%= name.id %>">
+          <li class="current-rating" style="width:<%= name.percentage_vote %>%;"><%= name.average_vote ? "#{name.average_vote}/5 stars" : "No ratings" %>.</li>
+          <li><a href="#" title="1 star out of 5" class="one-star">1</a></li>
+          <li><a href="#" title="2 stars out of 5" class="two-stars">2</a></li>
+          <li><a href="#" title="3 stars out of 5" class="three-stars">3</a></li>
+          <li><a href="#" title="4 stars out of 5" class="four-stars">4</a></li>
+          <li><a href="#" title="5 stars out of 5" class="five-stars">5</a></li>
+        </ul>
+      </span>
+    </div>
+  </div>
 
 	<% if list_owner? %>
     <div class='admin'>
@@ -31,4 +34,5 @@
     <br/>
     <br/>
   <% end %>
+  <%= clearfix %>
 </div>
