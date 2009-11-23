@@ -4,6 +4,7 @@ get '/lists' do
 end
 
 get '/list/:id' do
+  content_type 'text/html', :charset => 'utf-8' 
   @list = List.get(params[:id])
   @female_names = @list.female_names
   @male_names   = @list.male_names
