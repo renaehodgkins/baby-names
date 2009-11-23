@@ -1,9 +1,11 @@
 get '/names/new' do
+  content_type 'text/html', :charset => 'utf-8'
   erb :new
 end
 
 # create
 post '/lists/:id/names' do
+  content_type 'text/html', :charset => 'utf-8'
   @list = List.get(params[:id])
   @name = @list.names.new(:name => params[:name_name], :gender => params[:gender_gender])
   if @name.save
