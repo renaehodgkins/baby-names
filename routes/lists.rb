@@ -4,7 +4,6 @@ get '/lists' do
 end
 
 get '/list/:id' do
-  content_type 'text/html', :charset => 'utf-8' 
   @list = List.get(params[:id])
   @female_names = @list.female_names
   @male_names   = @list.male_names
@@ -24,7 +23,6 @@ get '/lists/:id/edit' do
 end
 
 put '/list/:id' do
-  puts params.inspect
   @list = current_user.lists.get(params[:id])
   if @list.update_attributes(params[:list])
     flash[:notice] = "List '#{@list.url}' updated successfully."

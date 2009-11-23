@@ -62,6 +62,10 @@ helpers do
   end
 end
 
+before do
+  content_type 'text/html', :charset => 'utf-8'
+end
+
 get '/stylesheets/stylesheet.css' do
   content_type 'text/css', :charset => 'utf-8'
   sass :stylesheet
