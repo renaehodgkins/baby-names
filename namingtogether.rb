@@ -1,4 +1,4 @@
-$KCODE = 'UTF-8'
+$KCODE = 'UTF8'
 
 require 'rubygems'
 require 'sinatra'
