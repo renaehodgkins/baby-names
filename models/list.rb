@@ -1,9 +1,11 @@
 class List
   include DataMapper::Resource
-  property :id,         Serial
-  property :user_id,    Integer       
-  property :url,        String
-  property :gender,     String
+  
+  property :id,          Serial
+  property :user_id,     Integer       
+  property :url,         String
+  property :gender,      String
+  property :description, Text
 
   belongs_to :user
   has n, :names
