@@ -5,8 +5,6 @@ class Comment
   property :list_id,    Integer
   property :created_at, DateTime
   property :updated_at, DateTime
-  property :body,       Text
-  property :description,       Text
   property :author,     String
   
   belongs_to :name
