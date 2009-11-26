@@ -11,25 +11,6 @@
 <body>
   <div id="outer-wrapper">
     <div id="wrapper">
-
-      <div id='header'>
-        <div id='logo'>
-          <h1><a href='/'>Naming Together</a></h1>
-        </div>
-        <div id='top_links'>
-          <ul>
-            <% if current_user %>
-              <li><a href='/settings'><%= current_user.email %></a></li>
-              <li><a href='/lists'>my lists</a></li>
-              <li><a href='/logout'>logout</a></li>
-            <% else %>
-              <li><a href='/login'>login</a></li> 
-              <li><a href='/signup'>signup</a></li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-
       <div id="flash-container">
         <div class='container'>
           <% if flash[:error] %>
@@ -47,6 +28,29 @@
           <% end %>
         </div>
       </div>
+
+      <div id='top_links'>
+        <ul>
+          <% if current_user %>
+            <li><a href='/settings'><%= current_user.email %></a></li>
+            <li class='active'><a href='/lists'>my lists</a></li>
+            <li><a href='/logout'>logout</a></li>
+          <% else %>
+            <li><a href='/login'>login</a></li> 
+            <li><a href='/signup'>signup</a></li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div id='header'>
+        <h1 id="logo"><a href='/'>namingtogether</a></h1>
+        <ul id="navigation">
+          <li><a href="/">all names</a></li>
+          <li><a href="/">public lists</a></li>
+        </ul>
+        <%= clearfix %>
+      </div>
+
       
       <div id="content">
         <%= yield %>
@@ -54,7 +58,8 @@
 
       <%= clearfix %>
       <div id='footer'>
-        Renae Bair &copy; 2009
+        &copy; 2009 <a href='http://twitter.com/renaebair'>Renae Bair</a> and namingtogether.com<br/>
+        all rights reserved
       </div>
     </div>
   </div>

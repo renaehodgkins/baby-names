@@ -1,18 +1,19 @@
-<h2>Welcome to NamingTogether!</h2>
+<div id="homepage">
+  <h2>all lists</h2>
+  <p>These are lists of names that people are using considering for their next little one.</p>
 
+  <div class='lists'>
+    <% List.all.each do |list| %>
+      <span class='<%= list.gender %>'><a href='<%= "list/#{list.to_param}" %>'><%= list.url %></a></span>
+    <% end %>
+  </div>
 
-<h3>Lists</h3>
+  <h2>all names</h2>
+  <p>These are all of the names currently being tracked across all lists.</p>
 
-<div class='lists'>
-  <% List.all.each do |list| %>
-    <span><a href='<%= "list/#{list.to_param}" %>'><%= list.url %></a></span>
-  <% end %>
-</div>
-
-<h3>Names</h3>
-
-<div class='lists'>
-  <% RootName.all.each do |name| %>
-    <span class='#{name.gender}'><a href='<%= "/names/#{name.to_param}" %>'><%= "#{name.name}" %></a></span>
-  <% end %>
+  <div class='names'>
+    <% RootName.all.each do |name| %>
+      <span class='<%= name.gender %>'><a href='<%= "/names/#{name.to_param}" %>'><%= "#{name.name}" %></a></span>
+    <% end %>
+  </div>
 </div>

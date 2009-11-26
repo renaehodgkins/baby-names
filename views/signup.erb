@@ -1,15 +1,16 @@
-<h1>Signup</h1>
-<%= error_messages_for(@user) %>
-<form action="/signup" method="POST">
-  <label>Email:</label>
-  <input type="text" name="user[email]" rows="20" />
-  <%= clearfix %>
-  <label>Password:</label>
-  <input type="password" name="user[password]" rows="20" />
-  <%= clearfix %>
-  <label>Password Confirmation:</label>
-  <input type="password" name="user[password_confirmation]" rows="20" />
-  <br/>
-  <input type="submit" value="Signup"/>
-</form>
-
+<div id="signup">
+  <h2>Signup</h2>
+  <%= error_messages_for(@user) %>
+  <form action="/signup" method="POST">
+    <label>Email:</label>
+    <input type="text" name="user[email]" rows="20" />
+    <%= clearfix %>
+    <label>Password:</label>
+    <input type="password" name="user[password]" rows="20" />
+    <%= clearfix %>
+    <label>Confirmation:</label>
+    <input type="password" name="user[password_confirmation]" rows="20" />
+    <%= clearfix %>
+    <input type="submit" value="Signup"/>
+  </form>
+</div>

@@ -27,12 +27,9 @@
     <div class='admin'>
       <form action="/lists/<%= @list.to_param %>/names/<%= name.to_param %>" method='post'>
         <input type='hidden' name="_method" value="delete">
-        <input type='submit' value='[delete name]'>
+        <input type='submit' value='delete' class='important'>
       </form>
     </div>
-  <% else %>
-    <br/>
-    <br/>
   <% end %>
   <%= clearfix %>
 </div>
