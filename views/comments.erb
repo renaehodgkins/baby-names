@@ -14,7 +14,7 @@
     <% @comments.each do |comment| %>
       <div class='comment'>
         <p class='author'><%= comment.author %> <span class='timestamp'>at <%= comment.created_at.strftime('%l:%M%P') %> on <%= comment.created_at.strftime('%m-%d-%Y') %></span></p>
-        <p class='body'><%= comment.body %></p>
+        <p class='body'><%= comment.body_heroku %></p>
 
         <% if list_owner? %>
           <form action="/lists/<%= @list.to_param %>/<%= @name.id %>/comments/<%= comment.id %>" method='POST'>

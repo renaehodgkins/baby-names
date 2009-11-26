@@ -5,7 +5,7 @@ class Comment
   property :list_id,    Integer
   property :created_at, DateTime
   property :updated_at, DateTime
-  property :body,       Text
+  property :body_heroku,Text
   property :author,     String
   
   belongs_to :name
