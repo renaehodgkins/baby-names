@@ -4,39 +4,39 @@
   <div id='<%= @name.gender %>-names'>
     <%= partial(:name, :locals => {:name => @name}) %>
   </div>
-</div>
 
-<div id="comments">
-  <h3><%= pluralize(@comments.size, 'Comment') %></h3>
-  <% if @comments.size == 0 %>
-    <p>There are no comments for this name; be the first!</p>
-  <% end %>
+  <div id="comments">
+    <h3><%= pluralize(@comments.size, 'Comment') %></h3>
+    <% if @comments.size == 0 %>
+      <p>There are no comments for this name; be the first!</p>
+    <% end %>
 
-  <% @comments.each do |comment| %>
-    <div class='comment'>
-      <p class='author'><%= comment.author %> <span class='timestamp'>at <%= comment.created_at.strftime('%l:%M%P') %> on <%= comment.created_at.strftime('%m-%d-%Y') %></span></p>
-      <p class='body'><%= comment.body %></p>
+    <% @comments.each do |comment| %>
+      <div class='comment'>
+        <p class='author'><%= comment.author %> <span class='timestamp'>at <%= comment.created_at.strftime('%l:%M%P') %> on <%= comment.created_at.strftime('%m-%d-%Y') %></span></p>
+        <p class='body'><%= comment.body %></p>
 
-      <% if list_owner? %>
-        <form action="/lists/<%= @list.to_param %>/<%= @name.id %>/comments/<%= comment.id %>" method='POST'>
-          <input type='hidden' name="_method" value="delete">
-          <input type='submit' value='[delete comment]'>
-        </form>
-      <% end %>
-    </div>
-  <% end %>
-</div>
+        <% if list_owner? %>
+          <form action="/lists/<%= @list.to_param %>/<%= @name.id %>/comments/<%= comment.id %>" method='POST'>
+            <input type='hidden' name="_method" value="delete">
+            <input type='submit' value='delete comment' class='important'>
+          </form>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 
-<div id="comment_form">
-  <h4>Add a comment</h4>
-  <form action="/lists/<%= @list.to_param %>/names/<%= @name.id %>/comments" method="POST">
-    <input type="hidden" name="comment_list_id" id="comment_list_id" />
+  <div id="comment_form">
+    <h3>Add a comment</h3>
+    <form action="/lists/<%= @list.to_param %>/names/<%= @name.id %>/comments" method="POST">
+      <input type="hidden" name="comment_list_id" id="comment_list_id" />
 
-    <label>Name</label>
-    <input type="text" name="comment_author" id="comment_author" rows="4" cols="25"/>
-    <br/>
-    <label>Comment</label>
-		<textarea name="comment_body" rows="5"></textarea>
-    <br/><input type="submit" value="Comment"/>
-  </form>
+      <label>Name</label>
+      <input type="text" name="comment_author" id="comment_author" rows="4" cols="25"/>
+      <br/>
+      <label>Comment</label>
+      <textarea name="comment_body" rows="5"></textarea>
+      <br/><input type="submit" value="Comment"/>
+    </form>
+  </div>
 </div>

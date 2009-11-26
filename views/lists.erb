@@ -1,11 +1,12 @@
-<h2>Your Lists</h2>
-<ul>
-<% @lists.each do |list| %>
-  <li>
-    <a href='/list/<%= list.to_param %>'><%= list.to_param %></a> | <a href='/lists/<%= list.to_param %>/edit'>edit</a>
-  </li>
-<% end %>
-</ul>
-<hr/>
-<a href='/lists/new'>Create a new list</a>
+<div id="lists">
+  <h2>my lists</h2>
+  <ul>
+  <% @lists.each do |list| %>
+    <li>
+      <a class='button' href='/lists/<%= list.to_param %>/edit'>edit</a> <a href='/list/<%= list.to_param %>'><%= list.to_param %></a> 
+    </li>
+  <% end %>
+  </ul>
 
+  <a class='button' href='/lists/new'>Create a new list</a>
+</div>

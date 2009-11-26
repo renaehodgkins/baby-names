@@ -1,46 +1,140 @@
+!boy_color      = #067079
+!girl_color     = #7E008E
+!dark_color     = #333333
+!medium_color   = #888888
+!light_color    = #D3D3D3
+
+!error_bg_color = #FBE3E4  
+!error_color    = #8A1F11 
+!error_border_color = #FBC2C4 
+
+!notice_color  	= #514721  	
+!notice_bg_color = #FFF6BF 	
+!notice_border_color = #FFD324
+
+!success_color = #264409  	
+!success_bg_color =	#E6EFC2 	
+!success_border_color = #C6D880
+
+=rounded_bottom_corners
+  :-moz-border-radius-bottomleft 8px
+  :-moz-border-radius-bottomright 8px
+  :-webkit-border-bottom-right-radius 8px
+  :-webkit-border-bottom-left-radius 8px
+
+=rounded_top_corners
+  :-moz-border-radius-topleft 8px
+  :-moz-border-radius-topright 8px
+  :-webkit-border-top-right-radius 8px
+  :-webkit-border-top-left-radius 8px
+
+
+=rounded_corners
+  +rounded_top_corners
+  +rounded_bottom_corners
+
+=inline_list
+  li
+    :display inline
+    :border-right 2px solid #D4D4D4
+    :padding-right 5px
+    &:last-child
+      :padding-right 0px
+      :border-right none
+
 body
-  :font-family "Helvetica"
+  :font-family Geneva, Verdana, sans-serif
   :font-size none
-  :margin 0 auto
-  :width 700px
+  :margin auto
+  :width 800px
+  :color= !dark_color
 
 a
   :text-decoration none
+  :color= !boy_color
+
+  &:visited
+    :color= !boy_color
+
+#outer-wrapper
+  :padding-top 20px
+  #wrapper
+    #content
+      :position relative
+
+#flash-container
+  :position absolute
+  :top 5px
+
+#top_links
+  a
+    :color= !light_color
+    &:hover
+      :color= !dark_color
+
+  .active a
+    :color= !medium_color
+    &:hover
+      :color= !dark_color
 
 #header
-  :padding-top 20px
-  :padding-bottom 40px
-  #logo
+  :border-top 1px solid #D4D4D4
+  :padding-bottom 20px
+  :background url(/images/gradient.png) repeat-x left bottom
+
+  h1
+    :padding-top 5px
+    :padding-bottom 5px
     :float left
-  #top_links
+    &#logo a
+      :display block
+      :background url(/images/logo.png) no-repeat left top
+      :text-indent -999em
+      :width 325px
+      :height 60px
+
+  ul#navigation
+    +inline_list
     :float right
-    ul
-      li
-        :display inline
-        :border-right 2px solid #ccc
-        :padding-right 5px
-        &:last-child
-          :padding-right 0px
-          :border-right none
-      
+    :padding-top 23px
+    :font-size 1.4em
+    li
+      :border none
+      :padding-left 10px
+
+#top_links
+  :text-align right
+  :padding-bottom 10px
+  ul
+    +inline_list
 
 #footer
-  :color #ccc
+  :padding-top 8px
+  :background url(/images/gradient.png) repeat-x left top
+  :color= !light_color
   :text-align center
   :font-size .8em
   :margin-top 50px
+  :margin-bottom 50px
+
+  a
+    :color= !medium_color
+    &:hover
+      :color= !dark_color
 
 #names
-  :float left
-  :width 100%
+  :margin auto
+  :width 80%
   :padding-bottom 20px
-  h2
-    :padding-bottom 20px
+
+  h3 a
+    :color= !dark_color
 
 .name
   :border-bottom 1px solid #ccc
   :padding-bottom 10px
   :margin-bottom 15px
+  :position relative
 
   .info
     :display none
@@ -49,17 +143,33 @@ a
     :float left
 
   .right_column
+    :position absolute
+    :right 0px
+    :bottom 0px
+
+  .admin
     :float right
+
+  h3
+    :font-size 1.5em
+    :font-weight normal
+    :padding-bottom 5px
+    a
+      :color= !dark_color
 
 #male-names
   :float left
-  :width 325px
+  :width 285px
+  a
+    :color= !boy_color
 
 #female-names
   :float right
-  :width 325px
+  :width 285px
   &.etymology
     :float none
+  a
+    :color= !girl_color
 
 .one-gender
   #female-names, #male-names
@@ -67,7 +177,7 @@ a
     :padding 0px
 
   .name
-    :width 325px
+    :width 285px
 
   .name.even
     :float right
@@ -76,6 +186,8 @@ a
     :float left
 
 .wide
+  :width 80%
+  :margin auto
   #female-names, #male-names
     :float none
     :width 100%
@@ -88,6 +200,8 @@ a
     h3
       :float left
       :font-size 2.5em
+      a
+        :color= !dark_color
     .info
       :display block
       :font-size 12px
@@ -95,17 +209,46 @@ a
 .female
   #female-names
     :float none
-    :margin-left auto
-    :margin-right auto
+    :margin auto
 
 .male
   #male-names
     :float none
-    :margin-left auto
-    :margin-right auto
+    :margin auto
+
+.button
+  +rounded_corners
+  :color #000
+  :font-size 12px
+  :background-color #ddd
+  :border 1px solid
+  :border-color #aaa
+  :padding-top 2px
+  :padding-bottom 2px
+  :padding-left 5px
+  :padding-right 5px
+  &:visited
+    :color #000
+
+form
+  input[type=submit]
+    +rounded_corners
+    :background-color #ddd
+    :border 1px solid
+    :border-color #aaa
+    :padding-top 2px
+    :padding-bottom 2px
+    :padding-left 5px
+    :padding-right 5px
 
 .name_form
-  :padding-bottom 20px
+  :width 285px
+  :padding-bottom 40px
+  input[type=submit]
+    :float right
+  input[type=text]
+    :margin-bottom 5px
+    :width 100%
 
 .voting form, .voting span
   :float right
@@ -118,7 +261,7 @@ a
   h3
     :padding-bottom 10px
   .comment
-    :padding-bottom 8px
+    :padding-bottom 20px
     .author
       :padding-bottom 5px
       :font-size .8em
@@ -127,3 +270,102 @@ a
     .body
       :padding-left 5px
 
+.message
+  :text-align center
+  :padding-top 20px
+  :padding-bottom 30px
+  :width 80%
+  :margin auto
+
+.share
+  :color= !medium_color
+  :text-align left
+  :font-size 0.9em
+  :margin-top -12px
+  :padding-bottom 10px
+  a
+    :color= !medium_color
+    &:hover
+      :color= !dark_color
+
+input[type=text], input[type=password], textarea
+  +rounded_corners
+  :border 1px solid 
+  :border-color= !medium_color
+  :padding 5px
+  :font-size 1.2em
+  :font-weight bold
+
+textarea
+  :width 325px
+  :margin-bottom 5px
+
+label
+  :display block
+  :float left
+  :padding-right 5px
+  :padding-top 10px
+  :text-align right
+  :width 125px
+
+input[type="submit"]
+  &.important
+    :background-color= !error_bg_color
+    :color= !error_color
+    :border 1px solid
+
+#lists
+  h2
+    :padding-bottom 10px
+  ul
+    :margin-bottom 15px
+  li
+    :padding 5px
+    :border-color= !error_border_color
+
+#login, #signup
+  :width 50%
+  :margin auto
+  :text-align right
+
+  input, h2
+    :margin-bottom 5px
+
+.list_form
+  p
+    :margin-bottom 10px
+    :margin-top 10px
+
+#new_list, #edit_list
+  h2
+    :padding-top 10px
+
+#homepage
+  h2
+    :padding-bottom 6px
+    :padding-top 10px
+  p
+    :padding-bottom 8px
+
+  .lists, .names
+    :font-size 1.2em
+    :margin-bottom 10px
+
+    .female a
+      :color= !girl_color
+
+    .male a
+      :color= !boy_color
+
+    .both a
+      :color= !medium_color
+
+#comment_form
+  :width 75%
+  :text-align right
+  input[type=text]
+    :width 325px
+    :margin-bottom 5px
+
+  h3
+    :margin-bottom 5px
