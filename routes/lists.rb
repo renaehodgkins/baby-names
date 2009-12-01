@@ -1,3 +1,8 @@
+get '/all_lists' do
+  @lists = List.all
+  erb :all_lists
+end
+
 get '/lists' do
   @lists = current_user.lists.all
   erb :lists

@@ -1,0 +1,10 @@
+<div id="all_names">
+  <h2>all names</h2>
+  <p>These are all of the names currently being tracked across all lists.</p>
+
+  <div class='names'>
+    <% @names.each do |name| %>
+      <span class='<%= name.gender %>'><a href='<%= "/names/#{name.to_param}" %>'><%= "#{name.name}" %></a></span>
+    <% end %>
+  </div>
+</div>

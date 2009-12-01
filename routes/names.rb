@@ -1,3 +1,8 @@
+get '/all_names' do
+  @names = RootName.all
+  erb :all_names
+end
+
 get '/names/new' do
   erb :new
 end

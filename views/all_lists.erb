@@ -1,0 +1,10 @@
+<div id="all_lists">
+  <h2>public lists</h2>
+  <p>These are all of the public lists on namingtogether</p>
+
+  <div class='lists'>
+    <% @lists.each do |list| %>
+      <span class='<%= list.gender %>'><a href='<%= "list/#{list.to_param}" %>'><%= list.url %></a></span>
+    <% end %>
+  </div>
+</div>
