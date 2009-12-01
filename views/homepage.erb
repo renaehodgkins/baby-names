@@ -1,19 +1,5 @@
 <div id="homepage">
-  <h2>all lists</h2>
-  <p>These are lists of names that people are considering for their babies.</p>
-
-  <div class='lists'>
-    <% List.all.each do |list| %>
-      <span class='<%= list.gender %>'><a href='<%= "list/#{list.to_param}" %>'><%= list.url %></a></span>
-    <% end %>
-  </div>
-
-  <h2>all names</h2>
-  <p>These are all of the names currently being tracked across all lists.</p>
-
-  <div class='names'>
-    <% RootName.all.each do |name| %>
-      <span class='<%= name.gender %>'><a href='<%= "/names/#{name.to_param}" %>'><%= "#{name.name}" %></a></span>
-    <% end %>
-  </div>
+  <h2>Naming our babies, Together!</h2>
+  <p>Naming our babies is one of the oldest rituals of humankind, and probably one of the most exciting things that expectant parents get to do as they prepare for the arrival of baby! Family and friends always want to be the ones that come up with the perfect name, and this is a simple way for expectant parents to invite their loved ones to share in this intimate process.</p>
+    <p>To get started, simply <a href='/signup'>signup</a> and create your list! You'll get a unique link for your list that you can send to people that you want help from. It's never been easier to get your personal community involved in this timeless ritual!</p>
 </div>
