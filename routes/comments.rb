@@ -8,9 +8,7 @@ end
 post '/lists/:list_id/names/:id/comments' do
   @list = List.get(params[:list_id])
   @name = Name.get(params[:id])
-  @comment = @name.comments.new(:body_heroku => params[:comment_body],
-                                :author => params[:comment_author] || 'anonymous',
-                                :list_id => @list.id)
+  @comment = @name.comments.new(params[:comment])
   if @comment.save
     flash[:notice] = "Comment saved."
   else

@@ -29,13 +29,13 @@
   <div id="comment_form">
     <h3>Add a comment</h3>
     <form action="/lists/<%= @list.to_param %>/names/<%= @name.id %>/comments" method="POST">
-      <input type="hidden" name="comment_list_id" id="comment_list_id" />
+      <input type="hidden" name="comment[list_id]" id="comment_list_id" value="<%= @list.id %>" />
 
       <label>Name</label>
-      <input type="text" name="comment_author" id="comment_author" rows="4" cols="25"/>
+      <input type="text" name="comment[author]" id="comment_author" rows="4" cols="25"/>
       <br/>
       <label>Comment</label>
-      <textarea name="comment_body" rows="5"></textarea>
+      <textarea name="comment[body_heroku]" rows="5"></textarea>
       <br/><input type="submit" value="Comment"/>
     </form>
   </div>

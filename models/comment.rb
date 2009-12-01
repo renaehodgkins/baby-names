@@ -9,4 +9,9 @@ class Comment
   property :author,     String
   
   belongs_to :name
+
+  def author=(new_author)
+    super unless new_author.blank?
+    attribute_set(:author, 'anonymous')
+  end
 end
