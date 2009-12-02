@@ -11,7 +11,7 @@ class Comment
   belongs_to :name
 
   def author=(new_author)
-    super unless new_author.blank?
-    attribute_set(:author, 'anonymous')
+    return attribute_set(:author, 'anonymous') if new_author.blank?
+    attribute_set(:author, new_author)
   end
 end
