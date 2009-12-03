@@ -16,6 +16,7 @@ $(document).ready(function() {
     jQuery.post('/' + name_id + '/vote', { "rating": vote }, function(response){
       $('#'+name_element+' .current-rating').replaceWith(response);
     });
+		return false;
   });
 });
 
