@@ -103,5 +103,5 @@ jQuery.fn.rater = function(url, options)
 		return true;
 	});
 
-	return this; // strict warning: anonymous function does not always return a value. fix?
+	return false; // strict warning: anonymous function does not always return a value. fix?
 }
