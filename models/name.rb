@@ -1,13 +1,13 @@
 class Name
   include DataMapper::Resource
 
-  property :id,             Serial
-  property :gender,         String       
-  property :list_id,        Integer
+  property :id,           Serial
+  property :gender,       String       
+  property :list_id,      Integer
   property :root_name_id, Integer
-  property :name,           String,  :nullable => false
-  property :created_at,     DateTime
-  property :updated_at,     DateTime
+  property :name,         String, :required => true
+  property :created_at,   DateTime
+  property :updated_at,   DateTime
   
   has n, :votes
   has n, :comments
@@ -15,8 +15,8 @@ class Name
   belongs_to :list
   belongs_to :root_name
   
-  validates_present :gender, :name
-  validates_is_unique :name, :scope => :list_id
+  validates_presence_of :gender, :name
+  validates_uniqueness_of :name, :scope => :list_id
 
   before :create do |name|
     root_name = RootName.all(:name => self.name, :gender => self.gender).first || RootName.create(:name => self.name, :gender => self.gender)

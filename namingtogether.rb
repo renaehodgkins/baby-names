@@ -6,6 +6,7 @@ require 'sass'
 require 'dm-core'
 require 'dm-timestamps'
 require 'dm-validations'
+require 'dm-migrations'
 require 'rack-flash'
 require 'active_support/inflector'
 

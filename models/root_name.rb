@@ -1,7 +1,7 @@
 class RootName
   include DataMapper::Resource
   property :id,          Serial
-  property :name,        String,  :nullable => false
+  property :name,        String,  :required => true
   property :gender,      String       
   property :names_count, Integer, :default => 0
   property :created_at,  DateTime
@@ -9,7 +9,7 @@ class RootName
 
   has n, :names
 
-  validates_present :gender, :name
+  validates_presence_of :gender, :name
 
   def to_param
     "#{id}-#{name.downcase.gsub(/\W/, '-')}"

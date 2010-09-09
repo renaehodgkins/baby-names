@@ -10,10 +10,10 @@ class List
   belongs_to :user
   has n, :names
   
-  validates_present :url
-  validates_length :url, :min => 4
-  validates_is_unique :url, :message => "Url is already in use, please choose a unique url"
-  validates_present :gender, :message => "Please select a gender"
+  validates_presence_of :url
+  validates_length_of :url, :min => 4
+  validates_uniqueness_of :url, :message => "Url is already in use, please choose a unique url"
+  validates_presence_of :gender, :message => "Please select a gender"
   
   before :create do
     self.url ||= String.random(7).downcase
