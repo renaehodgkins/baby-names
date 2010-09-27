@@ -23,12 +23,12 @@ end
 
 get '/lists/:id/edit' do
   login_required
-  @list = current_user.lists.get(params[:id])
+  @list = current_user.lists.get(params[:id].to_i)
   erb :list_edit
 end
 
 put '/list/:id' do
-  @list = current_user.lists.get(params[:id])
+  @list = current_user.lists.get(params[:id].to_i)
   if @list.update_attributes(params[:list])
     flash[:notice] = "List '#{@list.url}' updated successfully."
     redirect "/list/#{@list.to_param}"
@@ -52,7 +52,7 @@ end
 
 delete '/list/:id' do
   login_required
-  @list = current_user.lists.get(params[:id])
+  @list = current_user.lists.get(params[:id].to_i)
   @list.destroy
   flash[:notice] = "List has been deleted."
   redirect "/lists"
